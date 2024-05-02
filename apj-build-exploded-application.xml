@@ -1,0 +1,118 @@
+<project name="deploy-ejb" default="deploy" basedir="./build-file">
+    <property environment="env"/>
+    <property name="deploy.dir" value="E:\apache server\wildfly-10\standalone\deployments"/>
+    <property name="cleanapj-warname" value="cleanapj.war"/>
+    <property name="cleanapj-jarname" value="cleanapj-ejb.jar"/>
+    <property name="cleanapj-earname" value="cleanapj.ear"/>
+    <property name="srcejb-dir" value="./cleanapj-ejb/src/"/>
+    <property name="srcwar-dir" value="./cleanapj-war/src/java"/>
+    
+    <property name="build-cleanapj-war_war" value="${basedir}/cleanapj_war" />
+    <property name="build-cleanapj-ejb_jar" value="${basedir}/cleanapj_jar" />
+    <property name="build-cleanapj-lib" value="${basedir}/lib" />
+    
+    <property name="buildEar.dir" value="${basedir}/ear"/>
+    <property name="webcontent.dir" value="../cleanapj-war/web"/>
+    
+    <path id="classpath">
+        <fileset dir="${basedir}\lib">
+            <include name="**/*.jar" />
+        </fileset>
+    </path>
+	
+	
+
+	
+    <target name="clean" >
+        <echo> 
+			Compilation cleanapj GENIUS_ART_C [START]----------------
+		</echo>
+		<echo>JDK ${ant.java.version}  ${ant.version}  </echo>
+        <echo> clean </echo>
+        
+        <delete file="${build-cleanapj-ejb_jar}" />
+        <delete file="${build-cleanapj-war_war}" />
+        <delete file="${build-cleanapj-lib}" />
+        <delete file="${basedir}/${cleanapj-earname}" />
+        <delete file="${buildEar.dir}/${cleanapj-earname}" />
+		
+        <echo> clean done </echo>
+    </target>
+	
+    <tstamp>
+	  <format property="dateDuJour" pattern="dd/MM/yyyy hh:mm aa" />
+	</tstamp>
+	
+    <target name="init" depends="clean">
+        <echo> initialisation ${dateDuJour} </echo>
+        
+        <mkdir dir="${build-cleanapj-war_war}"/>
+        <mkdir dir="${build-cleanapj-war_war}/WEB-INF"/>
+        <mkdir dir="${build-cleanapj-war_war}/WEB-INF/lib"/>
+        <mkdir dir="${build-cleanapj-war_war}/WEB-INF/classes"/>
+        <mkdir dir="${build-cleanapj-war_war}/WEB-INF/classes/META-INF"/>
+        
+        <mkdir dir="${build-cleanapj-ejb_jar}"/>
+		
+		
+		<echo file="${webcontent.dir}/dateBuild.txt" append="false" message="${dateDuJour}" />
+        
+        <copy todir="${build-cleanapj-war_war}/">
+            <fileset dir="${webcontent.dir}" excludes="WEB-INF/**"/>
+        </copy>
+        <copy todir="${build-cleanapj-war_war}/WEB-INF/lib/">
+            <fileset dir="${basedir}\lib" />
+        </copy>
+
+        <!--<copy file="../cleanapj-war/web/WEB-INF/web.xml" tofile="${build-cleanapj-war_war}/WEB-INF/web.xml" />-->
+		<copy file="../cleanapj-ejb/src/java/project.properties" tofile="${build-cleanapj-ejb_jar}/project.properties" />
+		
+        <echo>  initialisation done </echo>
+    </target>
+	
+    <target name="compile" depends="init">
+        <echo> compilation </echo>	
+        <javac srcdir="../cleanapj-ejb/src/java" destdir="${build-cleanapj-ejb_jar}" nowarn="true" debug="on" deprecation="off" classpathref="classpath" includeantruntime="false" encoding="iso-8859-1">
+        </javac>
+        <copy todir="${build-cleanapj-ejb_jar}/i18n">
+            <fileset dir="../cleanapj-ejb/src/java/i18n" includes="**/*.properties" />
+        </copy>
+        <echo> compilation done </echo>	
+    </target>
+    
+    <target name="buildEjbJar" depends="compile">
+        <echo>Build EJB JAR</echo>
+        <jar basedir="${build-cleanapj-ejb_jar}" destfile="${buildEar.dir}/${cleanapj-jarname}" />
+        <copy file="${buildEar.dir}/${cleanapj-jarname}" todir="${build-cleanapj-war_war}/WEB-INF/lib/">
+        </copy>
+        <echo>End Build EJB JAR</echo>
+    </target>
+
+    <target name="compileWar" depends="buildEjbJar">
+        <echo> compilation </echo>
+        <javac srcdir="../cleanapj-war/src/java" destdir="${build-cleanapj-war_war}/WEB-INF/classes/" nowarn="true" debug="on" deprecation="off" classpathref="classpath" includeantruntime="false" encoding="iso-8859-1">
+            <classpath>
+                <pathelement location="${buildEar.dir}/${cleanapj-jarname}" />
+            </classpath>
+        </javac>
+        <echo> compilation done</echo>
+    </target>
+	
+	
+    <target name="deploy" depends="compileWar">	
+	   <echo>${env.JBOSS_HOME}</echo>
+        <copy todir="${deploy.dir}/clean-apj.war">
+            <fileset dir="${build-cleanapj-war_war}" >
+                <include name="**/*"/>
+            </fileset>	
+        </copy>
+        <echo> deployement exploded war done </echo>	
+        <echo> 
+			Compilation cleanapj GENIUS_ART_C [DONE]----------------
+		</echo>
+		
+    </target>	
+	
+	
+
+</project>

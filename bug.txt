@@ -1,0 +1,1 @@
+ C:\Users\Hasina\Documents\GitHub\itusolar-back\cleanapj-ejb\src\java\reporting\ReportingCDN.java:24 => Changer le nom du fichier en ReportingCdn.java:24 

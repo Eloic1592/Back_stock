@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.j2ee.ejbjarproject</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/j2ee-ejbjarproject/3">
+            <name>Clean APJ-ejb</name>
+            <minimum-ant-version>1.6.5</minimum-ant-version>
+            <included-library dirs="200">file.reference.apache-commons-net.jar</included-library>
+            <included-library dirs="200">file.reference.barbecue-1.5-beta1.jar</included-library>
+            <included-library dirs="200">file.reference.barcode4j-2.1.jar</included-library>
+            <included-library dirs="200">file.reference.camel-xmlbeans-2.11.1.jar</included-library>
+            <included-library dirs="200">file.reference.classes12.jar</included-library>
+            <included-library dirs="200">file.reference.com.lowagie.text-2.1.7.jar</included-library>
+            <included-library dirs="200">file.reference.commons-beanutils-1.8.3.jar</included-library>
+            <included-library dirs="200">file.reference.commons-beanutils-1.9.0.jar</included-library>
+            <included-library dirs="200">file.reference.commons-beanutils-1.9.2.jar</included-library>
+            <included-library dirs="200">file.reference.commons-cli-1.1.jar</included-library>
+            <included-library dirs="200">file.reference.commons-codec-1.11.jar</included-library>
+            <included-library dirs="200">file.reference.commons-collections-3.2.1.jar</included-library>
+            <included-library dirs="200">file.reference.commons-digester-2.1.jar</included-library>
+            <included-library dirs="200">file.reference.commons-fileupload-1.3.1.jar</included-library>
+            <included-library dirs="200">file.reference.commons-fileupload-1.3.3.jar</included-library>
+            <included-library dirs="200">file.reference.commons-io-1.3.2.jar</included-library>
+            <included-library dirs="200">file.reference.commons-io-1.3.jar</included-library>
+            <included-library dirs="200">file.reference.commons-javaflow.jar</included-library>
+            <included-library dirs="200">file.reference.commons-lang3-3.7.jar</included-library>
+            <included-library dirs="200">file.reference.commons-logging-1.1.1.jar</included-library>
+            <included-library dirs="200">file.reference.core-2.2.jar</included-library>
+            <included-library dirs="200">file.reference.core-renderer.jar</included-library>
+            <included-library dirs="200">file.reference.flyingsaucer-renderer.jar</included-library>
+            <included-library dirs="200">file.reference.gson-2.2.2.jar</included-library>
+            <included-library dirs="200">file.reference.gson-2.4.jar</included-library>
+            <included-library dirs="200">file.reference.htmlcomponent.jar</included-library>
+            <included-library dirs="200">file.reference.httpclient-4.3.4.jar</included-library>
+            <included-library dirs="200">file.reference.httpcore-4.3.2.jar</included-library>
+            <included-library dirs="200">file.reference.httpmime-4.3.jar</included-library>
+            <included-library dirs="200">file.reference.iText-2.1.7.js2.jar</included-library>
+            <included-library dirs="200">file.reference.itext-pdfa-5.5.6.jar</included-library>
+            <included-library dirs="200">file.reference.itext-xtra-5.5.6.jar</included-library>
+            <included-library dirs="200">file.reference.itextpdf-5.5.6.jar</included-library>
+            <included-library dirs="200">file.reference.jackson-annotations-2.6.0.jar</included-library>
+            <included-library dirs="200">file.reference.jackson-core-2.6.0.jar</included-library>
+            <included-library dirs="200">file.reference.jackson-databind-2.6.0.jar</included-library>
+            <included-library dirs="200">file.reference.jakarta-taglibs-standard-1.1.2.jar</included-library>
+            <included-library dirs="200">file.reference.jasperreports-5.6.0.jar</included-library>
+            <included-library dirs="200">file.reference.jasperreports-6.1.0.jar</included-library>
+            <included-library dirs="200">file.reference.jasperreports-fonts-6.1.0.jar</included-library>
+            <included-library dirs="200">file.reference.jasperreports-javaflow-6.1.0.jar</included-library>
+            <included-library dirs="200">file.reference.java-json.jar</included-library>
+            <included-library dirs="200">file.reference.javaee.jar</included-library>
+            <included-library dirs="200">file.reference.javase-2.2.jar</included-library>
+            <included-library dirs="200">file.reference.javax.ejb.jar</included-library>
+            <included-library dirs="200">file.reference.javax.json-1.0.jar</included-library>
+            <included-library dirs="200">file.reference.javax.mail-1.4.4.jar</included-library>
+            <included-library dirs="200">file.reference.javax.mail.jar</included-library>
+            <included-library dirs="200">file.reference.javax.servlet-3.0.jar</included-library>
+            <included-library dirs="200">file.reference.javax.servlet.jar</included-library>
+            <included-library dirs="200">file.reference.javax.websocket-api-1.0-rc4.jar</included-library>
+            <included-library dirs="200">file.reference.javax.websocket-api.jar</included-library>
+            <included-library dirs="200">file.reference.javax.ws.rs.jar</included-library>
+            <included-library dirs="200">file.reference.jboss-client.jar</included-library>
+            <included-library dirs="200">file.reference.jboss-logging-3.1.0.GA.jar</included-library>
+            <included-library dirs="200">file.reference.jboss-marshalling-1.3.11.GA.jar</included-library>
+            <included-library dirs="200">file.reference.jboss-marshalling-river-1.3.11.GA.jar</included-library>
+            <included-library dirs="200">file.reference.jboss-remote-naming-1.0.2.Final.jar</included-library>
+            <included-library dirs="200">file.reference.jboss-remoting-3.2.8.GA.jar</included-library>
+            <included-library dirs="200">file.reference.jcommon-1.0.23.jar</included-library>
+            <included-library dirs="200">file.reference.jcommon-1.0.8.jar</included-library>
+            <included-library dirs="200">file.reference.jeval.jar</included-library>
+            <included-library dirs="200">file.reference.jfreechart-1.0.19.jar</included-library>
+            <included-library dirs="200">file.reference.jfreechart.jar</included-library>
+            <included-library dirs="200">file.reference.joda-time-2.1.jar</included-library>
+            <included-library dirs="200">file.reference.json-simple-1.1.jar</included-library>
+            <included-library dirs="200">file.reference.jsoup-1.11.3.jar</included-library>
+            <included-library dirs="200">file.reference.mongo-java-driver-2.10.1.jar</included-library>
+            <included-library dirs="200">file.reference.netty-buffer-4.0.25.Final.jar</included-library>
+            <included-library dirs="200">file.reference.netty-codec-4.0.25.Final.jar</included-library>
+            <included-library dirs="200">file.reference.netty-codec-http-4.0.25.Final.jar</included-library>
+            <included-library dirs="200">file.reference.netty-common-4.0.25.Final.jar</included-library>
+            <included-library dirs="200">file.reference.netty-handler-4.0.25.Final.jar</included-library>
+            <included-library dirs="200">file.reference.netty-socketio-1.7.6.jar</included-library>
+            <included-library dirs="200">file.reference.netty-transport-4.0.25.Final.jar</included-library>
+            <included-library dirs="200">file.reference.netty-transport-native-epoll-4.0.25.Final.jar</included-library>
+            <included-library dirs="200">file.reference.ojdbc6-11.jar</included-library>
+            <included-library dirs="200">file.reference.org.apache.commons.io.jar</included-library>
+            <included-library dirs="200">file.reference.poi-3.12-20150511.jar</included-library>
+            <included-library dirs="200">file.reference.poi-3.9.jar</included-library>
+            <included-library dirs="200">file.reference.poi-examples-3.12-20150511.jar</included-library>
+            <included-library dirs="200">file.reference.poi-excelant-3.12-20150511.jar</included-library>
+            <included-library dirs="200">file.reference.poi-ooxml-3.11.jar</included-library>
+            <included-library dirs="200">file.reference.poi-ooxml-3.12-20150511.jar</included-library>
+            <included-library dirs="200">file.reference.poi-ooxml-schemas-3.12-20150511.jar</included-library>
+            <included-library dirs="200">file.reference.poi-scratchpad-3.12-20150511.jar</included-library>
+            <included-library dirs="200">file.reference.postgis-1.5.0.jar</included-library>
+            <included-library dirs="200">file.reference.postgresql-42.2.6.jar</included-library>
+            <included-library dirs="200">file.reference.postgresql-9.3-1103-jdbc4.jar</included-library>
+            <included-library dirs="200">file.reference.postgresql-9.3-1103.jdbc4.jar</included-library>
+            <included-library dirs="200">file.reference.servlet-api.jar</included-library>
+            <included-library dirs="200">file.reference.slf4j-api-1.7.7.jar</included-library>
+            <included-library dirs="200">file.reference.slf4j-api-1.7.9.jar</included-library>
+            <included-library dirs="200">file.reference.slf4j-simple-1.7.9.jar</included-library>
+            <included-library dirs="200">file.reference.sun.misc.base64decoder.jar</included-library>
+            <included-library dirs="200">file.reference.taglibs-standard-impl-1.2.5.jar</included-library>
+            <included-library dirs="200">file.reference.validation-api-1.0.0.GA.jar</included-library>
+            <included-library dirs="200">file.reference.xmlbeans-2.6.0.jar</included-library>
+            <included-library dirs="200">file.reference.xmlworker-5.5.6.jar</included-library>
+            <included-library dirs="200">file.reference.xnio-api-3.0.0.GA.jar</included-library>
+            <included-library dirs="200">file.reference.xnio-nio-3.0.0.cr7.jar</included-library>
+            <included-library dirs="200">file.reference.xuggle-utils-1.20.688.jar</included-library>
+            <included-library dirs="200">file.reference.xuggle-xuggler-5.4.jar</included-library>
+            <included-library dirs="200">file.reference.zxing-javase.jar</included-library>
+            <included-library dirs="200">file.reference.zxing.jar</included-library>
+            <source-roots>
+                <root id="src.dir" name="Source Packages"/>
+            </source-roots>
+            <test-roots>
+                <root id="test.src.dir" name="Test Packages"/>
+            </test-roots>
+        </data>
+    </configuration>
+</project>
