@@ -85,20 +85,18 @@ public class NaturemouvementManager extends HServiceManager implements Naturemou
         List<Statnaturemouvement> dataList = new ArrayList<>();
         Naturemouvement[] listnaturemouvement=this.getall(connection);
         Statnaturemouvement[] data=getstat(connection);
-        double depense=0;
-        double gain=0;
-        double benefice=0;
-
+        Statnaturemouvement statnaturemouvement=null;
         for (int annee = 2011; annee <= Utils.getCurrentYear(); annee++) {
             for (int mois = 1; mois <= 12; mois++) {
                 for (Naturemouvement naturemouvement : listnaturemouvement) {
                     boolean found = false;
                     for (Statnaturemouvement stat : data) {
+                        statnaturemouvement=new Statnaturemouvement();
                         if (stat.getAnnee()==annee&& stat.getMois() == mois && stat.getIdnaturemouvement().equals(naturemouvement.getIdnaturemouvement())) {
                             found = true;
-                            depense=stat.getDepense();
-                            gain=stat.getGain();
-                            benefice=stat.getBenefice();
+                            statnaturemouvement.setDepense(stat.getDepense());
+                            statnaturemouvement.setGain(stat.getGain());
+                            statnaturemouvement.setBenefice(stat.getBenefice());
                             break;
                         }
                     }
@@ -125,9 +123,9 @@ public class NaturemouvementManager extends HServiceManager implements Naturemou
                         stat.setMois_nom(stat.getMois_nom());
                         stat.setIdnaturemouvement(naturemouvement.getIdnaturemouvement());
                         stat.setNaturemouvement(naturemouvement.getNaturemouvement());
-                        stat.setDepense(depense);
-                        stat.setGain(gain);
-                        stat.setBenefice(benefice);
+                        stat.setDepense(statnaturemouvement.getDepense());
+                        stat.setGain(statnaturemouvement.getGain());
+                        stat.setBenefice(statnaturemouvement.getBenefice());
                         dataList.add(stat);
 //                        System.out.println(stat.getAnnee()+"annee"+stat.getMois()+"mois misy");
 
