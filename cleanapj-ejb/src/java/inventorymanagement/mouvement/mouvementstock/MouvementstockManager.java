@@ -343,9 +343,6 @@ public class MouvementstockManager extends HServiceManager implements Mouvements
         naturemouvementPageList.setTotalsortie(sommesortie(connection));
         naturemouvementPageList.setTotalarticleentrees(naturemouvementManager.gettotalarticleentreeparannee(connection));
         naturemouvementPageList.setTotalarticlesorties(naturemouvementManager.gettotalarticlesortieparannee(connection));
-//        naturemouvementPageList.setGetcurrentsommearticleentree(naturemouvementManager.getotalentreecurrentMonth(Utils.getCurrentYear(),Utils.getCurrentMonth(),connection));
-//        naturemouvementPageList.setGetcurrentsommearticlesortie(naturemouvementManager.getotalsortiecurrentMonth(Utils.getCurrentYear(),Utils.getCurrentMonth(),connection));
-
         return naturemouvementPageList;
     }
 
