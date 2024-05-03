@@ -327,6 +327,7 @@ public class NaturemouvementManager extends HServiceManager implements Naturemou
         connection=this.getConnection(connection);
         NaturemouvementPageList naturemouvementPageList = new NaturemouvementPageList();
         naturemouvementPageList.setCyclemouvements(this.cyclemouvementsparannee(connection));
+        naturemouvementPageList.setNaturemouvements(this.getlistenature(connection));
         return naturemouvementPageList;
     }
 
