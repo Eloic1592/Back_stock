@@ -8,12 +8,9 @@ import inventorymanagement.mouvement.utils.Utils;
 import itusolar.prepare.HServiceManager;
 
 import java.sql.Connection;
-
-import java.text.DateFormatSymbols;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Calendar;
+
 
 public class NaturemouvementManager extends HServiceManager implements NaturemouvementManagerSignature {
 
@@ -335,49 +332,50 @@ public class NaturemouvementManager extends HServiceManager implements Naturemou
         connection = this.getConnection(connection);
         List<Cyclemouvement> dataList = new ArrayList<>();
         Cyclemouvement[] cyclemouvements=this.getcyclemouvement(connection);
+        Naturemouvement[] naturemouvements=this.getall(connection);
         Cyclemouvement data =null;
+        for (Naturemouvement naturemouvement : naturemouvements) {
         for(int annee=2011; annee<=Utils.getCurrentYear(); annee++){
             for (int mois = 1; mois <= 12; mois++) {
                 boolean found = false;
-                for(Cyclemouvement cyclemouvement:cyclemouvements){
-                    data=new Cyclemouvement();
-                    data.setIdnaturemouvement(cyclemouvement.getIdnaturemouvement());
-                    data.setNaturemouvement(cyclemouvement.getNaturemouvement());
-                    if(cyclemouvement.getAnnee()==annee && cyclemouvement.getMois()==mois){
-                        found = true;
-                        data.setEntree(cyclemouvement.getEntree());
-                        data.setSortie(cyclemouvement.getSortie());
-                        break;
+                    for (Cyclemouvement cyclemouvement : cyclemouvements) {
+                        data = new Cyclemouvement();
+                        data.setIdnaturemouvement(naturemouvement.getIdnaturemouvement());
+                        data.setNaturemouvement(naturemouvement.getNaturemouvement());
+                        if (cyclemouvement.getAnnee() == annee && cyclemouvement.getMois() == mois && cyclemouvement.getIdnaturemouvement().equals(naturemouvement.getIdnaturemouvement())) {
+                            found = true;
+                            data.setEntree(cyclemouvement.getEntree());
+                            data.setSortie(cyclemouvement.getSortie());
+                            break;
+                        }
                     }
+                    if (!found) {
+                        // Création d'un objet Statnaturemouvement avec des valeurs par défaut (0 pour depense et gain)
+                        Cyclemouvement stat = new Cyclemouvement();
+                        stat.setAnnee(annee);
+                        stat.setMois_nom(Utils.getNomMois(mois));
+                        stat.setMois(mois);
+                        stat.setEntree(0);
+                        stat.setSortie(0);
+                        stat.setIdnaturemouvement(data.getIdnaturemouvement());
+                        stat.setNaturemouvement(data.getNaturemouvement());
+                        System.out.println(stat.getAnnee() + "annee" + stat.getMois() + "mois tsy misy");
+                        dataList.add(stat);
+                    } else {
+                        // Création d'un objet Statnaturemouvement avec des valeurs par défaut (0 pour depense et gain)
+                        Cyclemouvement stat = new Cyclemouvement();
+                        stat.setAnnee(annee);
+                        stat.setMois_nom(Utils.getNomMois(mois));
+                        stat.setMois(mois);
+                        stat.setEntree(data.getEntree());
+                        stat.setSortie(data.getSortie());
+                        stat.setIdnaturemouvement(data.getIdnaturemouvement());
+                        stat.setNaturemouvement(data.getNaturemouvement());
+                        System.out.println(stat.getAnnee() + "annee" + stat.getMois() + "mois misy");
+                        dataList.add(stat);
 
 
-                }
-                if (!found) {
-                    // Création d'un objet Statnaturemouvement avec des valeurs par défaut (0 pour depense et gain)
-                    Cyclemouvement stat = new Cyclemouvement();
-                    stat.setAnnee(annee);
-                    stat.setMois_nom(Utils.getNomMois(mois));
-                    stat.setMois(mois);
-                    stat.setEntree(0);
-                    stat.setSortie(0);
-                    stat.setIdnaturemouvement(data.getIdnaturemouvement());
-                    stat.setNaturemouvement(data.getNaturemouvement());
-//                    System.out.println(stat.getAnnee()+"annee"+stat.getMois()+"mois tsy misy");
-                    dataList.add(stat);
-                }else {
-                    // Création d'un objet Statnaturemouvement avec des valeurs par défaut (0 pour depense et gain)
-                    Cyclemouvement stat = new Cyclemouvement();
-                    stat.setAnnee(annee);
-                    stat.setMois_nom(Utils.getNomMois(mois));
-                    stat.setMois(mois);
-                    stat.setEntree(data.getEntree());
-                    stat.setSortie(data.getSortie());
-                    stat.setIdnaturemouvement(data.getIdnaturemouvement());
-                    stat.setNaturemouvement(data.getNaturemouvement());
-//                    System.out.println(stat.getAnnee()+"annee"+stat.getMois()+"mois misy");
-                    dataList.add(stat);
-
-
+                    }
                 }
             }
         }
@@ -385,10 +383,8 @@ public class NaturemouvementManager extends HServiceManager implements Naturemou
         List<Cyclemouvement> otherData =new ArrayList<>();
 
         for (Cyclemouvement stat : dataList) {
-            if (stat.getAnnee() ==Utils.getCurrentYear()) {
-                if(stat.getMois() == Utils.getCurrentMonth()) {
+            if (stat.getAnnee() ==Utils.getCurrentYear() && stat.getMois() == Utils.getCurrentMonth()) {
                     currentMonthData.add(stat);
-                }
             } else {
                 otherData.add(stat);
             }
