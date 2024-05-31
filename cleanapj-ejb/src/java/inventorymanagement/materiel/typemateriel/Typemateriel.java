@@ -8,9 +8,10 @@ import java.sql.Connection;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Typemateriel extends MappedInteger {
-   String idtypemateriel;
+    String idtypemateriel;
     String typemateriel;
     String idcategoriemateriel;
+    String val;
 
     public Typemateriel() {
         super.setNomTable("typemateriel");
@@ -58,5 +59,13 @@ public class Typemateriel extends MappedInteger {
 
     public void setIdcategoriemateriel(String idcategoriemateriel) {
         this.idcategoriemateriel = idcategoriemateriel;
+    }
+
+    public String getVal() {
+        return val;
+    }
+
+    public void setVal(String val) {
+        this.val = val;
     }
 }

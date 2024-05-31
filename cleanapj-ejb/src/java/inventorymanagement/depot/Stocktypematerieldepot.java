@@ -8,6 +8,7 @@ public class Stocktypematerieldepot extends MappedInteger {
     String typemateriel;
     String iddepot;
     String depot;
+    String val;
 
     public Stocktypematerieldepot() {
         setNomTable("stock_typemateriel_depot");
@@ -51,5 +52,13 @@ public class Stocktypematerieldepot extends MappedInteger {
 
     public void setDepot(String depot) {
         this.depot = depot;
+    }
+
+    public String getVal() {
+        return val;
+    }
+
+    public void setVal(String val) {
+        this.val = val;
     }
 }

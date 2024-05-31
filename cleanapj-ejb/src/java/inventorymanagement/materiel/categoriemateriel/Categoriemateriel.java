@@ -10,6 +10,7 @@ import java.sql.Connection;
 public class Categoriemateriel extends MappedInteger {
     String idcategoriemateriel;
     String categoriemateriel;
+    String val;
 
     public Categoriemateriel() {
         super.setNomTable("categoriemateriel");
@@ -48,5 +49,13 @@ public class Categoriemateriel extends MappedInteger {
 
     public void setCategoriemateriel(String categoriemateriel) {
         this.categoriemateriel = categoriemateriel;
+    }
+
+    public String getVal() {
+        return val;
+    }
+
+    public void setVal(String val) {
+        this.val = val;
     }
 }

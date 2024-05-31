@@ -1,7 +1,6 @@
 package inventorymanagement.mouvement.mouvementstock;
 
 import bean.CGenUtil;
-import bean.ResultatEtSomme;
 import inventorymanagement.article.ArticleManager;
 import inventorymanagement.depot.DepotManager;
 import inventorymanagement.etudiant.EtudiantManager;
@@ -14,15 +13,11 @@ import inventorymanagement.mouvement.mouvementphysique.totalarticleentree;
 import inventorymanagement.mouvement.mouvementphysique.totalarticlesortie;
 import inventorymanagement.mouvement.naturemouvement.NaturemouvementManager;
 import inventorymanagement.mouvement.naturemouvement.NaturemouvementPageList;
-import inventorymanagement.mouvement.naturemouvement.Statnaturemouvement;
-import inventorymanagement.mouvement.utils.Utils;
 import itusolar.prepare.HServiceManager;
 
 
 import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class MouvementstockManager extends HServiceManager implements MouvementstockManagerSignature {
 
@@ -51,8 +46,8 @@ public class MouvementstockManager extends HServiceManager implements Mouvements
     @Override
     public void createmouvementphysique(Mouvementphysique mouvementphysique, Connection connection) throws Exception {
         connection = this.getConnection(connection);
-        double total=((mouvementphysique.getQuantite()*mouvementphysique.getPu())*mouvementphysique.getTypemouvement()*-1);
-        mouvementphysique.setTotal(total);
+//        double total=((mouvementphysique.getQuantite()*mouvementphysique.getPu())*mouvementphysique.getTypemouvement()*-1);
+//        mouvementphysique.setTotal(total);
 
         if (mouvementphysique.getIddetailmouvementphysique()!=null) {
                 mouvementphysique.updateToTable(connection);

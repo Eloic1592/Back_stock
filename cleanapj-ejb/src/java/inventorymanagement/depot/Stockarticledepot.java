@@ -7,6 +7,7 @@ public class Stockarticledepot extends MappedInteger {
     double quantite;
     String iddepot;
     String depot;
+    String val;
 
     public Stockarticledepot() {
         setNomTable("stock_article_depot");
@@ -34,5 +35,13 @@ public class Stockarticledepot extends MappedInteger {
 
     public void setDepot(String depot) {
         this.depot = depot;
+    }
+
+    public String getVal() {
+        return val;
+    }
+
+    public void setVal(String val) {
+        this.val = val;
     }
 }

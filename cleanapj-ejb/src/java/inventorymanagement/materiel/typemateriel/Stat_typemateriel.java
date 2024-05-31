@@ -8,6 +8,7 @@ public class Stat_typemateriel extends MappedInteger {
     String mois;
     String idtypemateriel;
     String typemateriel;
+    String val;
     String naturemouvement;
     String idnaturemouvement;
     double depense;
@@ -87,5 +88,13 @@ public class Stat_typemateriel extends MappedInteger {
 
     public void setIdtypemateriel(String idtypemateriel) {
         this.idtypemateriel = idtypemateriel;
+    }
+
+    public String getVal() {
+        return val;
+    }
+
+    public void setVal(String val) {
+        this.val = val;
     }
 }

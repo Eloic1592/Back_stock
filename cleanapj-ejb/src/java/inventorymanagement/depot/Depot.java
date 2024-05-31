@@ -14,6 +14,8 @@ import java.sql.Connection;
 public class Depot extends MappedInteger {
     String iddepot;
     String  depot;
+    String codedep;
+    double capacite;
 
     public Depot() {
         super.setNomTable("depot");
@@ -53,6 +55,21 @@ public class Depot extends MappedInteger {
         this.depot = depot;
     }
 
+    public String getCodedep() {
+        return codedep;
+    }
+
+    public void setCodedep(String codedep) {
+        this.codedep = codedep;
+    }
+
+    public double getCapacite() {
+        return capacite;
+    }
+
+    public void setCapacite(double capacite) {
+        this.capacite = capacite;
+    }
 
     public static void main(String[] args) throws Exception {
         Connection c = null;

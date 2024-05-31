@@ -46,6 +46,9 @@ public class Listearticle extends MappedInteger {
     }
 
     public void setMarque(String marque) {
+        if(marque==null || marque==""){
+        this.marque="Aucune marque specifiee";
+        }
         this.marque = marque;
     }
 
@@ -54,6 +57,9 @@ public class Listearticle extends MappedInteger {
     }
 
     public void setModele(String modele) {
+        if(modele==null || modele==""){
+            this.modele="Aucun modele specifie";
+        }
         this.modele = modele;
     }
 
@@ -62,6 +68,9 @@ public class Listearticle extends MappedInteger {
     }
 
     public void setDescription(String description) {
+        if(description==null || description==""){
+            this.description="Aucune description specifiee";
+        }
         this.description = description;
     }
 

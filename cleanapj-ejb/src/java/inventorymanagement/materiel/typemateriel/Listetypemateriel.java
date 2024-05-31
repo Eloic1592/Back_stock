@@ -7,6 +7,8 @@ public class Listetypemateriel extends MappedInteger {
     String typemateriel;
     String idcategoriemateriel;
     String categoriemateriel;
+    String val;
+    String codecat;
 
 
     public Listetypemateriel() {
@@ -52,5 +54,21 @@ public class Listetypemateriel extends MappedInteger {
 
     public void setCategoriemateriel(String categoriemateriel) {
         this.categoriemateriel = categoriemateriel;
+    }
+
+    public String getVal() {
+        return val;
+    }
+
+    public void setVal(String val) {
+        this.val = val;
+    }
+
+    public String getCodecat() {
+        return codecat;
+    }
+
+    public void setCodecat(String codecat) {
+        this.codecat = codecat;
     }
 }
