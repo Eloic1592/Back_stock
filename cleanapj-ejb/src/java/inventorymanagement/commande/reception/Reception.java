@@ -4,11 +4,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import itusolar.prepare.MappedInteger;
 
 import java.sql.Connection;
+import java.sql.Timestamp;
 
 public class Reception extends MappedInteger {
-    String idrepcetion;
+    String idreception;
     String idcommande;
-    String datereception;
+    Timestamp datereception;
     int statut;
 
     public Reception() {
@@ -20,25 +21,26 @@ public class Reception extends MappedInteger {
     public void construirePK(Connection c) throws Exception {
         this.setNomTable("reception");
         this.preparePk("REC", "getseqreception");
-        this.setIdrepcetion(makePK(c));
+        this.setIdreception(makePK(c));
 
     }
+
     @Override
     public String getTuppleID() {
-        return idrepcetion;
+        return idreception;
     }
 
     @Override
     public String getAttributIDName() {
-        return "idrepcetion";
+        return "idreception";
     }
 
-    public String getIdrepcetion() {
-        return idrepcetion;
+    public String getIdreception() {
+        return idreception;
     }
 
-    public void setIdrepcetion(String idrepcetion) {
-        this.idrepcetion = idrepcetion;
+    public void setIdreception(String idreception) {
+        this.idreception = idreception;
     }
 
     public String getIdcommande() {
@@ -49,11 +51,11 @@ public class Reception extends MappedInteger {
         this.idcommande = idcommande;
     }
 
-    public String getDatereception() {
+    public Timestamp getDatereception() {
         return datereception;
     }
 
-    public void setDatereception(String datereception) {
+    public void setDatereception(Timestamp datereception) {
         this.datereception = datereception;
     }
 

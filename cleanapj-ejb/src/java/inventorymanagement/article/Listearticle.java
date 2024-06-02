@@ -8,6 +8,7 @@ public class Listearticle extends MappedInteger {
     String typemateriel;
     String marque;
     String modele;
+    String codearticle;
     String description;
     double prix;
     double quantitestock;
@@ -101,6 +102,14 @@ public class Listearticle extends MappedInteger {
         this.quantitestock = quantitestock;
     }
 
+    public String getCodearticle() {
+        return codearticle;
+    }
+
+    public void setCodearticle(String codearticle) {
+        this.codearticle = codearticle;
+    }
+
     public String getVal() {
         return val;
     }
@@ -108,4 +117,5 @@ public class Listearticle extends MappedInteger {
     public void setVal(String val) {
         this.val = val;
     }
+
 }

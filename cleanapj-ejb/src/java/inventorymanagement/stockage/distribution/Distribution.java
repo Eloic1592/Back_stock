@@ -1,11 +1,13 @@
 package inventorymanagement.stockage.distribution;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import itusolar.prepare.MappedInteger;
 
 import java.sql.Connection;
 import java.sql.Timestamp;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Distribution extends MappedInteger {
     String iddistribution;
     String idarticle;
@@ -13,6 +15,10 @@ public class Distribution extends MappedInteger {
     Timestamp datedistribution;
     String iddepot;
     int statut;
+
+    public Distribution() {
+        this.setNomTable("distribution");
+    }
 
     @Override
     @JsonIgnore

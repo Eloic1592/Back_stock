@@ -9,6 +9,7 @@ public class Vueinventaire extends MappedInteger {
     String idarticle;
     double quantitereel;
     String marque;
+    String codearticle;
     String modele;
     double quantitetheorique;
     Timestamp dateinventaire;
@@ -80,5 +81,13 @@ public class Vueinventaire extends MappedInteger {
 
     public void setStatut(int statut) {
         this.statut = statut;
+    }
+
+    public String getCodearticle() {
+        return codearticle;
+    }
+
+    public void setCodearticle(String codearticle) {
+        this.codearticle = codearticle;
     }
 }

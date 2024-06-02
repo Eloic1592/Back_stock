@@ -1,11 +1,13 @@
 package inventorymanagement.stockage.inventaire;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import itusolar.prepare.MappedInteger;
 
 import java.sql.Connection;
 import java.sql.Timestamp;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Inventaire extends MappedInteger {
     String idinventaire;
     String idarticle;
@@ -13,6 +15,10 @@ public class Inventaire extends MappedInteger {
     double quantitetheorique;
     Timestamp dateinventaire;
     int statut;
+
+    public Inventaire() {
+        this.setNomTable("inventaire");
+    }
 
     @Override
     @JsonIgnore
@@ -29,7 +35,7 @@ public class Inventaire extends MappedInteger {
 
     @Override
     public String getAttributIDName() {
-        return "idstockage";
+        return "idinventaire";
     }
 
     public String getIdinventaire() {

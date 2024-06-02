@@ -11,6 +11,7 @@ public class Vuedistribution extends MappedInteger {
     String idarticle;
     String marque;
     String modele;
+    String codearticle;
     String codedep;
     String depot;
     double quantite;
@@ -101,5 +102,13 @@ public class Vuedistribution extends MappedInteger {
 
     public void setStatut(int statut) {
         this.statut = statut;
+    }
+
+    public String getCodearticle() {
+        return codearticle;
+    }
+
+    public void setCodearticle(String codearticle) {
+        this.codearticle = codearticle;
     }
 }

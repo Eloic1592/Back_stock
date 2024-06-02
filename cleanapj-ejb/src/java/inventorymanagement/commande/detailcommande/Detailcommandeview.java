@@ -8,6 +8,7 @@ public class Detailcommandeview extends MappedInteger {
     String marque;
     String modele;
     String description;
+    String codearticle;
     String descarticle;
     double quantite;
     double pu;
@@ -87,5 +88,13 @@ public class Detailcommandeview extends MappedInteger {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    public String getCodearticle() {
+        return codearticle;
+    }
+
+    public void setCodearticle(String codearticle) {
+        this.codearticle = codearticle;
     }
 }

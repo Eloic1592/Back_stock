@@ -5,6 +5,7 @@ import inventorymanagement.article.ArticleManager;
 import inventorymanagement.client.ClientManager;
 import inventorymanagement.commande.detailcommande.Detailcommande;
 import inventorymanagement.commande.detailcommande.Detailcommandeview;
+import inventorymanagement.commande.reception.Reception;
 import inventorymanagement.commande.reception.Vuereception;
 import itusolar.prepare.HServiceManager;
 
@@ -143,11 +144,28 @@ public class CommandeManager extends HServiceManager implements CommandeManagerS
         commandePageList.setArticles(articleManager.getall(connection));
         return commandePageList;
     }
+    public void createreception(Reception reception, Connection connection) throws Exception {
+        connection = this.getConnection(connection);
+        if (reception.getIdreception()!=null) {
+            reception.updateToTable(connection);
+            return;
+        }else {
+            reception.construirePK(connection);
+            CGenUtil.save(reception, connection);
+
+        }
+    }
+
     public CommandePageList reception(Connection connection) throws Exception {
         connection = this.getConnection(connection);
         CommandePageList commandePageList =new CommandePageList();
         commandePageList.setVuereceptions(this.getallreception(connection));
         return commandePageList;
+    }
+    public Reception getreception(String idreception,Connection connection) throws Exception {
+        connection = this.getConnection(connection);
+        Reception[] data =(Reception[]) CGenUtil.rechercher(new Reception(), new String[0], new String[0], connection, "and idreception='"+idreception+"'");
+        return data[0];
     }
 
 

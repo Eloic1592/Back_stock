@@ -3,6 +3,7 @@ package inventorymanagement.commande.commande;
 public class CommandeParams {
     String idcommande;
     String iddetailcommande;
+    String idreception;
 
 
 
@@ -23,5 +24,13 @@ public class CommandeParams {
 
     public void setIddetailcommande(String iddetailcommande) {
         this.iddetailcommande = iddetailcommande;
+    }
+
+    public String getIdreception() {
+        return idreception;
+    }
+
+    public void setIdreception(String idreception) {
+        this.idreception = idreception;
     }
 }

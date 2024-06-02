@@ -1,6 +1,7 @@
 package inventorymanagement.commande.commande;
 
 import inventorymanagement.commande.detailcommande.Detailcommande;
+import inventorymanagement.commande.reception.Reception;
 import itusolar.controller.HController;
 import itusolar.controller.HPost;
 
@@ -80,12 +81,28 @@ public class CommandeController extends HController {
         this.writeSuccess(response, null,this.commandeManager.editformdetails(commandeParams.getIddetailcommande(),connection)).close();
         connection.close();
     }
+    @HPost(url = "/createreception")
+    public void saveereceip(HttpServletRequest request, HttpServletResponse response, Reception reception) throws Exception {
+        this.activeJson(response);
+        Connection connection = this.getConnection();
+        this.commandeManager.createreception(reception, connection);
+        this.writeSuccess(response, null,"lasa ny donnees").close();
+        connection.close();
+    }
 
-    @HPost(url = "/getreception")
+    @HPost(url = "/listreception")
     public void getreception(HttpServletRequest request, HttpServletResponse response,Object o) throws Exception {
         this.activeJson(response);
         Connection connection = this.getConnection();
         this.writeSuccess(response, null,this.commandeManager.reception(connection)).close();
+        connection.close();
+    }
+
+    @HPost(url = "/getreception")
+    public void getreception(HttpServletRequest request, HttpServletResponse response,CommandeParams commandeParams) throws Exception {
+        this.activeJson(response);
+        Connection connection = this.getConnection();
+        this.writeSuccess(response, null,this.commandeManager.getreception(commandeParams.getIdreception(),connection)).close();
         connection.close();
     }
 }

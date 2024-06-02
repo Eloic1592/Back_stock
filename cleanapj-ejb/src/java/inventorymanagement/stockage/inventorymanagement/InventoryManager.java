@@ -3,6 +3,7 @@ package inventorymanagement.stockage.inventorymanagement;
 import bean.CGenUtil;
 import inventorymanagement.article.ArticleManager;
 
+import inventorymanagement.depot.DepotManager;
 import inventorymanagement.stockage.distribution.Distribution;
 import inventorymanagement.stockage.distribution.Vuedistribution;
 import inventorymanagement.stockage.inventaire.Inventaire;
@@ -16,6 +17,7 @@ import java.sql.Connection;
 public class InventoryManager extends HServiceManager implements InventorySignature {
 
     ArticleManager articleManager=new ArticleManager();
+    DepotManager depotManager =new DepotManager();
     @Override
     public void createdistribution(Distribution distribution, Connection connection) throws Exception {
         connection = this.getConnection(connection);
@@ -76,11 +78,31 @@ public class InventoryManager extends HServiceManager implements InventorySignat
         return data;
     }
 
+    @Override
+    public Stockage getstockage(String idstockage, Connection connection) throws Exception {
+        connection=this.getConnection(connection);
+        Stockage[] data=(Stockage[])CGenUtil.rechercher(new Stockage(), null, null, connection, "and idstockage='"+idstockage+"'");
+        return data[0];
+    }
+
+    @Override
+    public Distribution getdistribution(String idistribution, Connection connection) throws Exception {
+        connection=this.getConnection(connection);
+        Distribution[] data=(Distribution[])CGenUtil.rechercher(new Distribution(), null, null, connection, "and iddistribution='"+idistribution+"'");
+        return data[0];
+    }
+
+    @Override
+    public Inventaire getinventaire(String idinventaire, Connection connection) throws Exception {
+        connection=this.getConnection(connection);
+        Inventaire[] data=(Inventaire[])CGenUtil.rechercher(new Inventaire(), null, null, connection, "and idinventaire='"+idinventaire+"'");
+        return data[0];
+    }
+
     public InventoryPagelist distribution(Connection connection) throws Exception{
         connection=this.getConnection(connection);
         InventoryPagelist inventoryPagelist=new InventoryPagelist();
         inventoryPagelist.setVuedistributions(this.listdistribution(connection));
-        inventoryPagelist.setArticles(articleManager.getall(connection));
         return inventoryPagelist;
     }
 
@@ -88,7 +110,6 @@ public class InventoryManager extends HServiceManager implements InventorySignat
         connection=this.getConnection(connection);
         InventoryPagelist inventoryPagelist=new InventoryPagelist();
         inventoryPagelist.setVuestockages(this.liststockage(connection));
-        inventoryPagelist.setArticles(articleManager.getall(connection));
         return inventoryPagelist;
     }
 
@@ -96,8 +117,54 @@ public class InventoryManager extends HServiceManager implements InventorySignat
         connection=this.getConnection(connection);
         InventoryPagelist inventoryPagelist=new InventoryPagelist();
         inventoryPagelist.setVueinventaires(this.listinventaire(connection));
+        return inventoryPagelist;
+    }
+    public InventoryPagelist editdistribution(String iddistribution,Connection connection) throws Exception{
+        connection=this.getConnection(connection);
+        InventoryPagelist inventoryPagelist=new InventoryPagelist();
+        inventoryPagelist.setDistribution(this.getdistribution(iddistribution,connection));
+        inventoryPagelist.setArticles(articleManager.getall(connection));
+        inventoryPagelist.setDepots(depotManager.getall(connection));
+        return inventoryPagelist;
+    }
+
+    public InventoryPagelist editstockage(String idstockage,Connection connection) throws Exception{
+        connection=this.getConnection(connection);
+        InventoryPagelist inventoryPagelist=new InventoryPagelist();
+        inventoryPagelist.setStockage(this.getstockage(idstockage,connection));
         inventoryPagelist.setArticles(articleManager.getall(connection));
         return inventoryPagelist;
     }
+
+    public InventoryPagelist editinventaire(String idinventaire,Connection connection) throws Exception{
+        connection=this.getConnection(connection);
+        InventoryPagelist inventoryPagelist=new InventoryPagelist();
+        inventoryPagelist.setInventaire(this.getinventaire(idinventaire,connection));
+        inventoryPagelist.setArticles(articleManager.getall(connection));
+        return inventoryPagelist;
+    }
+
+    public InventoryPagelist distributionform(Connection connection) throws Exception{
+        connection=this.getConnection(connection);
+        InventoryPagelist inventoryPagelist=new InventoryPagelist();
+        inventoryPagelist.setArticles(articleManager.getall(connection));
+        inventoryPagelist.setDepots(depotManager.getall(connection));
+        return inventoryPagelist;
+    }
+
+    public InventoryPagelist stockageform(Connection connection) throws Exception{
+        connection=this.getConnection(connection);
+        InventoryPagelist inventoryPagelist=new InventoryPagelist();
+        inventoryPagelist.setArticles(articleManager.getall(connection));
+        return inventoryPagelist;
+    }
+
+    public InventoryPagelist inventaireform(Connection connection) throws Exception{
+        connection=this.getConnection(connection);
+        InventoryPagelist inventoryPagelist=new InventoryPagelist();
+        inventoryPagelist.setArticles(articleManager.getall(connection));
+        return inventoryPagelist;
+    }
+
 
 }

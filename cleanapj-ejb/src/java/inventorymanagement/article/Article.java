@@ -21,6 +21,7 @@ public class Article extends MappedInteger {
     String idtypemateriel;
     double prix;
     double quantitestock;
+    String codearticle;
 
 
     public Article() {
@@ -126,4 +127,11 @@ public class Article extends MappedInteger {
         this.quantitestock = quantitestock;
     }
 
+    public String getCodearticle() {
+        return codearticle;
+    }
+
+    public void setCodearticle(String codearticle) {
+        this.codearticle = codearticle;
+    }
 }

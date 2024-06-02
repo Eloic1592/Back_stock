@@ -1,7 +1,5 @@
 package inventorymanagement.stockage.inventorymanagement;
 
-import inventorymanagement.mouvement.mouvementphysique.Mouvementphysique;
-import inventorymanagement.mouvement.mouvementstock.MouvementstockParams;
 import inventorymanagement.stockage.distribution.Distribution;
 import inventorymanagement.stockage.inventaire.Inventaire;
 import inventorymanagement.stockage.stockage.Stockage;
@@ -43,7 +41,7 @@ public class InventoryController extends HController {
         connection.close();
     }
 
-    @HPost(url="/distribution")
+    @HPost(url="/listdistribution")
     public void distribution(HttpServletRequest request, HttpServletResponse response,Object o) throws Exception {
         this.activeJson(response);
         Connection connection = this.getConnection();
@@ -51,7 +49,7 @@ public class InventoryController extends HController {
         connection.close();
     }
 
-    @HPost(url="/stockage")
+    @HPost(url="/liststockage")
     public void stockage(HttpServletRequest request, HttpServletResponse response,Object o) throws Exception {
         this.activeJson(response);
         Connection connection = this.getConnection();
@@ -59,11 +57,59 @@ public class InventoryController extends HController {
         connection.close();
     }
 
-    @HPost(url="/inventaire")
+    @HPost(url="/listinventaire")
     public void inventaire(HttpServletRequest request, HttpServletResponse response,Object o) throws Exception {
         this.activeJson(response);
         Connection connection = this.getConnection();
         this.writeSuccess(response, null,this.inventoryManager.inventaire(connection)).close();
+        connection.close();
+    }
+
+    @HPost(url="/getdistribution")
+    public void getdistribution(HttpServletRequest request, HttpServletResponse response,InventoryParams inventoryParams) throws Exception {
+        this.activeJson(response);
+        Connection connection = this.getConnection();
+        this.writeSuccess(response, null,this.inventoryManager.editdistribution(inventoryParams.getIddistribution(),connection)).close();
+        connection.close();
+    }
+
+    @HPost(url="/getstockage")
+    public void getstockage(HttpServletRequest request, HttpServletResponse response,InventoryParams inventoryParams) throws Exception {
+        this.activeJson(response);
+        Connection connection = this.getConnection();
+        this.writeSuccess(response, null,this.inventoryManager.editstockage(inventoryParams.getIdstockage(),connection)).close();
+        connection.close();
+    }
+
+    @HPost(url="/getinventaire")
+    public void getinventaire(HttpServletRequest request, HttpServletResponse response,InventoryParams inventoryParams) throws Exception {
+        this.activeJson(response);
+        Connection connection = this.getConnection();
+        this.writeSuccess(response, null,this.inventoryManager.editinventaire(inventoryParams.getIdinventaire(),connection)).close();
+        connection.close();
+    }
+
+    @HPost(url="/distributionform")
+    public void distributionform(HttpServletRequest request, HttpServletResponse response,Object o) throws Exception {
+        this.activeJson(response);
+        Connection connection = this.getConnection();
+        this.writeSuccess(response, null,this.inventoryManager.distributionform(connection)).close();
+        connection.close();
+    }
+
+    @HPost(url="/stockageform")
+    public void stockageform(HttpServletRequest request, HttpServletResponse response,Object o) throws Exception {
+        this.activeJson(response);
+        Connection connection = this.getConnection();
+        this.writeSuccess(response, null,this.inventoryManager.stockageform(connection)).close();
+        connection.close();
+    }
+
+    @HPost(url="/inventaireform")
+    public void inventaireform(HttpServletRequest request, HttpServletResponse response,Object o) throws Exception {
+        this.activeJson(response);
+        Connection connection = this.getConnection();
+        this.writeSuccess(response, null,this.inventoryManager.inventaireform(connection)).close();
         connection.close();
     }
 }

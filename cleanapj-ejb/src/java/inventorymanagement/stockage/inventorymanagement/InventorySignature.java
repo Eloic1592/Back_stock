@@ -16,5 +16,7 @@ public interface InventorySignature {
     public Vuedistribution[] listdistribution(Connection connection)throws Exception;
     public Vuestockage[] liststockage(Connection connection)throws Exception;
     public Vueinventaire[] listinventaire(Connection connection)throws Exception;
-
+    public Stockage getstockage(String idstockage,Connection connection) throws Exception;
+    public Distribution getdistribution(String idistribution,Connection connection) throws Exception;
+    public Inventaire getinventaire(String idinventaire,Connection connection) throws Exception;
 }
