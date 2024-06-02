@@ -12,6 +12,8 @@ public class Emplacement extends MappedInteger {
     String iddepot;
     String codeemp;
     double capacite;
+    String codebarre;
+
 
     public Emplacement() {
         setNomTable("emplacement");
@@ -64,5 +66,13 @@ public class Emplacement extends MappedInteger {
 
     public void setCapacite(double capacite) {
         this.capacite = capacite;
+    }
+
+    public String getCodebarre() {
+        return codebarre;
+    }
+
+    public void setCodebarre(String codebarre) {
+        this.codebarre = codebarre;
     }
 }

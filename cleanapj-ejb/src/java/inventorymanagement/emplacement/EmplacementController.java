@@ -42,7 +42,7 @@ public class EmplacementController extends HController {
     public void getbydepot(HttpServletRequest request, HttpServletResponse response, EmplacementParams emplacementParams) throws Exception {
         this.activeJson(response);
         Connection connection = this.getConnection();
-        this.writeSuccess(response, null,this.emplacementManager.getlistemplacement( emplacementParams.getIddepot(),connection)).close();
+        this.writeSuccess(response, null,this.emplacementManager.getlistemplacement(emplacementParams.getIddepot(),connection)).close();
         connection.close();
     }
 }

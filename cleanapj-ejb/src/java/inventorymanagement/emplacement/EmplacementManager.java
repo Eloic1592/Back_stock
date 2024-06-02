@@ -67,7 +67,7 @@ public class EmplacementManager extends HServiceManager implements  EmplacementM
     public EmplacementPageList getlistemplacement(String iddepot,Connection connection) throws Exception {
         connection=this.getConnection(connection);
         EmplacementPageList emplacementPageList=new EmplacementPageList();
-        emplacementPageList.setListeemplacements(getbydepot(iddepot,connection));
+        emplacementPageList.setListeemplacements(this.getbydepot(iddepot,connection));
         return emplacementPageList;
     }
 

@@ -1,0 +1,82 @@
+package inventorymanagement.stockage.inventaire;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import itusolar.prepare.MappedInteger;
+
+import java.sql.Connection;
+import java.sql.Timestamp;
+
+public class Inventaire extends MappedInteger {
+    String idinventaire;
+    String idarticle;
+    double quantitereel;
+    double quantitetheorique;
+    Timestamp dateinventaire;
+    int statut;
+
+    @Override
+    @JsonIgnore
+    public void construirePK(Connection c) throws Exception {
+        this.setNomTable("inventaire");
+        this.preparePk("INV", "getseqinventaire");
+        this.setIdinventaire(makePK(c));
+
+    }
+    @Override
+    public String getTuppleID() {
+        return idinventaire;
+    }
+
+    @Override
+    public String getAttributIDName() {
+        return "idstockage";
+    }
+
+    public String getIdinventaire() {
+        return idinventaire;
+    }
+
+    public void setIdinventaire(String idinventaire) {
+        this.idinventaire = idinventaire;
+    }
+
+    public String getIdarticle() {
+        return idarticle;
+    }
+
+    public void setIdarticle(String idarticle) {
+        this.idarticle = idarticle;
+    }
+
+    public double getQuantitereel() {
+        return quantitereel;
+    }
+
+    public void setQuantitereel(double quantitereel) {
+        this.quantitereel = quantitereel;
+    }
+
+    public double getQuantitetheorique() {
+        return quantitetheorique;
+    }
+
+    public void setQuantitetheorique(double quantitetheorique) {
+        this.quantitetheorique = quantitetheorique;
+    }
+
+    public Timestamp getDateinventaire() {
+        return dateinventaire;
+    }
+
+    public void setDateinventaire(Timestamp dateinventaire) {
+        this.dateinventaire = dateinventaire;
+    }
+
+    public int getStatut() {
+        return statut;
+    }
+
+    public void setStatut(int statut) {
+        this.statut = statut;
+    }
+}

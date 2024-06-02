@@ -19,6 +19,8 @@ public class Article extends MappedInteger {
     String modele;
     String description;
     String idtypemateriel;
+    double prix;
+    double quantitestock;
 
 
     public Article() {
@@ -107,25 +109,21 @@ public class Article extends MappedInteger {
                 try {reader.close();} catch (IOException e) {throw new RuntimeException(e);}
         }
     }
-    public static void main(String[] args) throws Exception {
-        Connection c = null;
-        int verif = 0;
-        try {
-            if (c == null) {
-                c = new UtilDB().GetConn();
-                verif = 1;
-            }
-            Article[] articles = (Article[]) CGenUtil.rechercher(new Article(), null, null, c, " and marque like 'DELL'");
-            for (int i = 0; i < articles.length; i++) {
-                System.out.println(articles[i].getModele());
-            }
-        }catch (Exception e) {
-            e.printStackTrace();
-            throw e;
-        } finally {
-            if (c != null && verif == 1) {
-                c.close();
-            }
-        }
+
+    public double getPrix() {
+        return prix;
     }
+
+    public void setPrix(double prix) {
+        this.prix = prix;
+    }
+
+    public double getQuantitestock() {
+        return quantitestock;
+    }
+
+    public void setQuantitestock(double quantitestock) {
+        this.quantitestock = quantitestock;
+    }
+
 }

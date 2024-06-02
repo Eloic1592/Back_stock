@@ -16,6 +16,7 @@ public class Depot extends MappedInteger {
     String  depot;
     String codedep;
     double capacite;
+    String codebarre;
 
     public Depot() {
         super.setNomTable("depot");
@@ -71,35 +72,11 @@ public class Depot extends MappedInteger {
         this.capacite = capacite;
     }
 
-    public static void main(String[] args) throws Exception {
-        Connection c = null;
-        int verif = 0;
-        try {
-            if (c == null) {
-                c = new UtilDB().GetConn();
-                verif = 1;
-            }
-            Depot depot = new Depot();
-            depot.construirePK(c);
-            depot.setIddepot("17");
-            depot.setDepot("depot 75");
-            if(depot.getIddepot()!=null) {
-                depot.updateToTable(c);
-            }else {
-                CGenUtil.save(depot, c);
-            }
-
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw e;
-        } finally {
-            if (c != null && verif == 1) {
-                c.close();
-            }
-        }
-
+    public String getCodebarre() {
+        return codebarre;
     }
 
+    public void setCodebarre(String codebarre) {
+        this.codebarre = codebarre;
+    }
 }

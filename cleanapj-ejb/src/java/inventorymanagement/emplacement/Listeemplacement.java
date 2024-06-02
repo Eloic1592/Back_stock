@@ -9,6 +9,8 @@ public class Listeemplacement extends MappedInteger {
     String codedep;
     String codeemp;
     double capacite;
+    String codebarre;
+
 
 
     public Listeemplacement() {
@@ -61,5 +63,13 @@ public class Listeemplacement extends MappedInteger {
 
     public void setCapacite(double capacite) {
         this.capacite = capacite;
+    }
+
+    public String getCodebarre() {
+        return codebarre;
+    }
+
+    public void setCodebarre(String codebarre) {
+        this.codebarre = codebarre;
     }
 }

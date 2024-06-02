@@ -9,6 +9,9 @@ public class Listearticle extends MappedInteger {
     String marque;
     String modele;
     String description;
+    double prix;
+    double quantitestock;
+    String val;
 
 
     public Listearticle() {
@@ -80,5 +83,29 @@ public class Listearticle extends MappedInteger {
 
     public void setIdtypemateriel(String idtypemateriel) {
         this.idtypemateriel = idtypemateriel;
+    }
+
+    public double getPrix() {
+        return prix;
+    }
+
+    public void setPrix(double prix) {
+        this.prix = prix;
+    }
+
+    public double getQuantitestock() {
+        return quantitestock;
+    }
+
+    public void setQuantitestock(double quantitestock) {
+        this.quantitestock = quantitestock;
+    }
+
+    public String getVal() {
+        return val;
+    }
+
+    public void setVal(String val) {
+        this.val = val;
     }
 }
