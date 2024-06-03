@@ -4,6 +4,7 @@ import bean.CGenUtil;
 import inventorymanagement.article.ArticleManager;
 
 import inventorymanagement.depot.DepotManager;
+import inventorymanagement.emplacement.EmplacementManager;
 import inventorymanagement.stockage.distribution.Distribution;
 import inventorymanagement.stockage.distribution.Vuedistribution;
 import inventorymanagement.stockage.inventaire.Inventaire;
@@ -18,6 +19,7 @@ public class InventoryManager extends HServiceManager implements InventorySignat
 
     ArticleManager articleManager=new ArticleManager();
     DepotManager depotManager =new DepotManager();
+    EmplacementManager emplacementManager=new EmplacementManager();
     @Override
     public void createdistribution(Distribution distribution, Connection connection) throws Exception {
         connection = this.getConnection(connection);
@@ -103,6 +105,7 @@ public class InventoryManager extends HServiceManager implements InventorySignat
         connection=this.getConnection(connection);
         InventoryPagelist inventoryPagelist=new InventoryPagelist();
         inventoryPagelist.setVuedistributions(this.listdistribution(connection));
+
         return inventoryPagelist;
     }
 
@@ -125,6 +128,7 @@ public class InventoryManager extends HServiceManager implements InventorySignat
         inventoryPagelist.setDistribution(this.getdistribution(iddistribution,connection));
         inventoryPagelist.setArticles(articleManager.getall(connection));
         inventoryPagelist.setDepots(depotManager.getall(connection));
+        inventoryPagelist.setListeemplacements(emplacementManager.getall(connection));
         return inventoryPagelist;
     }
 
@@ -149,6 +153,7 @@ public class InventoryManager extends HServiceManager implements InventorySignat
         InventoryPagelist inventoryPagelist=new InventoryPagelist();
         inventoryPagelist.setArticles(articleManager.getall(connection));
         inventoryPagelist.setDepots(depotManager.getall(connection));
+        inventoryPagelist.setListeemplacements(emplacementManager.getall(connection));
         return inventoryPagelist;
     }
 

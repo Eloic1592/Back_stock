@@ -3,16 +3,15 @@ package inventorymanagement.article;
 import itusolar.prepare.MappedInteger;
 
 public class Stockarticle extends MappedInteger {
-    double quantite;
     String idarticle;
     String marque;
     String modele;
-    String description;
-    String typemateriel;
+    String codearticle;
+    double quantitestock;
+    String etat;
     String idtypemateriel;
-    int mois;
-    String mois_nom;
-    int annee;
+    String val;
+    String typemateriel;
 
 
     public Stockarticle() {
@@ -27,15 +26,6 @@ public class Stockarticle extends MappedInteger {
     @Override
     public String getAttributIDName() {
         return "idarticle";
-    }
-
-
-    public double getQuantite() {
-        return quantite;
-    }
-
-    public void setQuantite(double quantite) {
-        this.quantite = quantite;
     }
 
     public String getIdarticle() {
@@ -62,20 +52,28 @@ public class Stockarticle extends MappedInteger {
         this.modele = modele;
     }
 
-    public String getDescription() {
-        return description;
+    public String getCodearticle() {
+        return codearticle;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCodearticle(String codearticle) {
+        this.codearticle = codearticle;
     }
 
-    public String getTypemateriel() {
-        return typemateriel;
+    public double getQuantitestock() {
+        return quantitestock;
     }
 
-    public void setTypemateriel(String typemateriel) {
-        this.typemateriel = typemateriel;
+    public void setQuantitestock(double quantitestock) {
+        this.quantitestock = quantitestock;
+    }
+
+    public String getEtat() {
+        return etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
     }
 
     public String getIdtypemateriel() {
@@ -86,27 +84,19 @@ public class Stockarticle extends MappedInteger {
         this.idtypemateriel = idtypemateriel;
     }
 
-    public int getMois() {
-        return mois;
+    public String getVal() {
+        return val;
     }
 
-    public void setMois(int mois) {
-        this.mois = mois;
+    public void setVal(String val) {
+        this.val = val;
     }
 
-    public int getAnnee() {
-        return annee;
+    public String getTypemateriel() {
+        return typemateriel;
     }
 
-    public void setAnnee(int annee) {
-        this.annee = annee;
-    }
-
-    public String getMois_nom() {
-        return mois_nom;
-    }
-
-    public void setMois_nom(String mois_nom) {
-        this.mois_nom = mois_nom;
+    public void setTypemateriel(String typemateriel) {
+        this.typemateriel = typemateriel;
     }
 }

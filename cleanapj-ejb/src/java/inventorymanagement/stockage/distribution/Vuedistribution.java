@@ -13,6 +13,8 @@ public class Vuedistribution extends MappedInteger {
     String modele;
     String codearticle;
     String codedep;
+    String iddepot;
+    String idemplacement;
     String depot;
     double quantite;
     Timestamp datedistribution;
@@ -128,5 +130,21 @@ public class Vuedistribution extends MappedInteger {
 
     public void setEtat(String etat) {
         this.etat = etat;
+    }
+
+    public String getIddepot() {
+        return iddepot;
+    }
+
+    public void setIddepot(String iddepot) {
+        this.iddepot = iddepot;
+    }
+
+    public String getIdemplacement() {
+        return idemplacement;
+    }
+
+    public void setIdemplacement(String idemplacement) {
+        this.idemplacement = idemplacement;
     }
 }

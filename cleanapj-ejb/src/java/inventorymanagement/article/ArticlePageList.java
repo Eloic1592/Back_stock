@@ -7,6 +7,8 @@ public class ArticlePageList {
     Typemateriel[] typemateriels;
     Stockarticle[] stockarticles;
     Listearticle  article;
+    double sommebonetat;
+    double sommeabime;
 
 
     public ArticlePageList() {
@@ -42,5 +44,21 @@ public class ArticlePageList {
 
     public void setArticle(Listearticle article) {
         this.article = article;
+    }
+
+    public double getSommebonetat() {
+        return sommebonetat;
+    }
+
+    public void setSommebonetat(double sommebonetat) {
+        this.sommebonetat = sommebonetat;
+    }
+
+    public double getSommeabime() {
+        return sommeabime;
+    }
+
+    public void setSommeabime(double sommeabime) {
+        this.sommeabime = sommeabime;
     }
 }

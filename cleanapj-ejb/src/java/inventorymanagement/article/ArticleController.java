@@ -60,4 +60,12 @@ public class ArticleController extends HController {
         this.writeSuccess(response, null,this.articleManager.rupturearticle(connection)).close();
         connection.close();
     }
+
+    @HPost(url="/detailstockarticle")
+    public void detailstockarticle(HttpServletRequest request, HttpServletResponse response,ArticleParams articleParams) throws Exception {
+        this.activeJson(response);
+        Connection connection = this.getConnection();
+        this.writeSuccess(response, null,this.articleManager.getdetaistockarticle(articleParams.getIdarticle(),connection)).close();
+        connection.close();
+    }
 }

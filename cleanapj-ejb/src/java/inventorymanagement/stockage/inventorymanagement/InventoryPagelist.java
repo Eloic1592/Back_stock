@@ -2,6 +2,7 @@ package inventorymanagement.stockage.inventorymanagement;
 
 import inventorymanagement.article.Article;
 import inventorymanagement.depot.Depot;
+import inventorymanagement.emplacement.Listeemplacement;
 import inventorymanagement.stockage.distribution.Distribution;
 import inventorymanagement.stockage.distribution.Vuedistribution;
 import inventorymanagement.stockage.inventaire.Inventaire;
@@ -13,6 +14,7 @@ public class InventoryPagelist {
     Vuedistribution[] vuedistributions;
     Vuestockage[] vuestockages;
     Vueinventaire[] vueinventaires;
+    Listeemplacement[] listeemplacements;
     Article[] articles;
     Depot[] depots;
     Distribution distribution;
@@ -84,5 +86,13 @@ public class InventoryPagelist {
 
     public void setDepots(Depot[] depots) {
         this.depots = depots;
+    }
+
+    public Listeemplacement[] getListeemplacements() {
+        return listeemplacements;
+    }
+
+    public void setListeemplacements(Listeemplacement[] listeemplacements) {
+        this.listeemplacements = listeemplacements;
     }
 }
