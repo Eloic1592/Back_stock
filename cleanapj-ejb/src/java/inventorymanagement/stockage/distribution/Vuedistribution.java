@@ -16,7 +16,9 @@ public class Vuedistribution extends MappedInteger {
     String depot;
     double quantite;
     Timestamp datedistribution;
+    String codeemp;
     int statut;
+    String etat;
 
     public Vuedistribution() {
         setNomTable("vue_distribution");
@@ -110,5 +112,21 @@ public class Vuedistribution extends MappedInteger {
 
     public void setCodearticle(String codearticle) {
         this.codearticle = codearticle;
+    }
+
+    public String getCodeemp() {
+        return codeemp;
+    }
+
+    public void setCodeemp(String codeemp) {
+        this.codeemp = codeemp;
+    }
+
+    public String getEtat() {
+        return etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
     }
 }

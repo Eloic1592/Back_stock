@@ -14,7 +14,9 @@ public class Distribution extends MappedInteger {
     double quantite;
     Timestamp datedistribution;
     String iddepot;
+    String idemplacement;
     int statut;
+    int etatdistribue;
 
     public Distribution() {
         this.setNomTable("distribution");
@@ -84,5 +86,21 @@ public class Distribution extends MappedInteger {
 
     public void setStatut(int statut) {
         this.statut = statut;
+    }
+
+    public String getIdemplacement() {
+        return idemplacement;
+    }
+
+    public void setIdemplacement(String idemplacement) {
+        this.idemplacement = idemplacement;
+    }
+
+    public int getEtatdistribue() {
+        return etatdistribue;
+    }
+
+    public void setEtatdistribue(int etatdistribue) {
+        this.etatdistribue = etatdistribue;
     }
 }

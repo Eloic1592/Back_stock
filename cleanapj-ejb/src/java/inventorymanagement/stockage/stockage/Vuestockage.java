@@ -15,6 +15,7 @@ public class Vuestockage extends MappedInteger {
     String codearticle;
     Timestamp datestockage;
     int statut;
+    String etat;
 
 
     public Vuestockage() {
@@ -83,5 +84,13 @@ public class Vuestockage extends MappedInteger {
 
     public void setCodearticle(String codearticle) {
         this.codearticle = codearticle;
+    }
+
+    public String getEtat() {
+        return etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
     }
 }

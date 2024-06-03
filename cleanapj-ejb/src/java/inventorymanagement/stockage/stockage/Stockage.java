@@ -14,6 +14,7 @@ public class Stockage extends MappedInteger {
     double quantite;
     Timestamp datestockage;
     int statut;
+    int etatstocke;
 
 
     public Stockage() {
@@ -76,5 +77,13 @@ public class Stockage extends MappedInteger {
 
     public void setStatut(int statut) {
         this.statut = statut;
+    }
+
+    public int getEtatstocke() {
+        return etatstocke;
+    }
+
+    public void setEtatstocke(int etatstocke) {
+        this.etatstocke = etatstocke;
     }
 }
