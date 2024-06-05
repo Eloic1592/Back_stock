@@ -66,8 +66,26 @@ public class ArticleManager extends HServiceManager implements ArticleManagerSig
         Stockarticle[] data=(Stockarticle[])CGenUtil.rechercher(new Stockarticle(), new String[0], new String[0], connection, "");
         return data;
     }
+    public double sommebonetat(Connection connection) throws Exception {
+        double somme=0;
+        connection=this.getConnection(connection);
+        Distribution[] data=(Distribution[])CGenUtil.rechercher(new Distribution(), new String[0], new String[0], connection, " and etatdistribue=1");
+        for(Distribution a:data){
+            somme+=a.getQuantite();
+        }
+        return somme;
+    }
+    public double sommeabime(Connection connection) throws Exception {
+        double somme=0;
+        connection=this.getConnection(connection);
+        Distribution[] data=(Distribution[])CGenUtil.rechercher(new Distribution(), new String[0], new String[0], connection, " and etatdistribue=0");
+        for(Distribution a:data){
+            somme+=a.getQuantite();
+        }
+        return somme;
+    }
 
-    public double sommebonetat(String idarticle,Connection connection) throws Exception {
+    public double sommedetailbonetat(String idarticle,Connection connection) throws Exception {
         double somme=0;
         connection=this.getConnection(connection);
         Distribution[] data=(Distribution[])CGenUtil.rechercher(new Distribution(), new String[0], new String[0], connection, "and idarticle='"+idarticle+"' and etatdistribue=1");
@@ -76,7 +94,7 @@ public class ArticleManager extends HServiceManager implements ArticleManagerSig
         }
         return somme;
     }
-    public double sommeabime(String idarticle,Connection connection) throws Exception {
+    public double sommedetailabime(String idarticle,Connection connection) throws Exception {
         double somme=0;
         connection=this.getConnection(connection);
         Distribution[] data=(Distribution[])CGenUtil.rechercher(new Distribution(), new String[0], new String[0], connection, "and idarticle='"+idarticle+"' and etatdistribue=0");
@@ -105,6 +123,8 @@ public class ArticleManager extends HServiceManager implements ArticleManagerSig
         connection=this.getConnection(connection);
         ArticlePageList articlePageList=new ArticlePageList();
         articlePageList.setStockarticles(getstockarticle(connection));
+        articlePageList.setSommebonetat(sommebonetat(connection));
+        articlePageList.setSommeabime(sommeabime(connection));
         return articlePageList;
     }
 
@@ -126,8 +146,8 @@ public class ArticleManager extends HServiceManager implements ArticleManagerSig
         connection=this.getConnection(connection);
         ArticlePageList articlePageList=new ArticlePageList();
         articlePageList.setStockarticles(detailstockarticle(idarticle,connection));
-        articlePageList.setSommebonetat(sommebonetat(idarticle,connection));
-        articlePageList.setSommeabime(sommeabime(idarticle,connection));
+        articlePageList.setSommebonetat(sommedetailbonetat(idarticle,connection));
+        articlePageList.setSommeabime(sommedetailabime(idarticle,connection));
         return articlePageList;
     }
 }

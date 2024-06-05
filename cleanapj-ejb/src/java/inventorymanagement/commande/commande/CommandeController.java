@@ -81,6 +81,16 @@ public class CommandeController extends HController {
         this.writeSuccess(response, null,this.commandeManager.editformdetails(commandeParams.getIddetailcommande(),connection)).close();
         connection.close();
     }
+
+    @HPost(url = "/totalcommandeannee")
+    public void totalcommandeannee(HttpServletRequest request, HttpServletResponse response, CommandeParams commandeParams) throws Exception {
+        this.activeJson(response);
+        Connection connection = this.getConnection();
+        this.writeSuccess(response, null,this.commandeManager.totalcommandeannee(commandeParams.getAnnee(),connection)).close();
+        connection.close();
+    }
+
+
     @HPost(url = "/createreception")
     public void saveereceip(HttpServletRequest request, HttpServletResponse response, Reception reception) throws Exception {
         this.activeJson(response);

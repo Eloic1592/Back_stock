@@ -15,6 +15,7 @@ public class Inventaire extends MappedInteger {
     double quantitetheorique;
     Timestamp dateinventaire;
     int statut;
+    int etatinventaire;
 
     public Inventaire() {
         this.setNomTable("inventaire");
@@ -84,5 +85,13 @@ public class Inventaire extends MappedInteger {
 
     public void setStatut(int statut) {
         this.statut = statut;
+    }
+
+    public int getEtatinventaire() {
+        return etatinventaire;
+    }
+
+    public void setEtatinventaire(int etatinventaire) {
+        this.etatinventaire = etatinventaire;
     }
 }

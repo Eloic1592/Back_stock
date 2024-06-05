@@ -15,6 +15,7 @@ public class CommandePageList {
     Commande commande;
     Detailcommande detailcommande;
     Vuereception[] vuereceptions;
+    Totalcommandeannee[] totalcommandeannees;
     double somme;
 
     public CommandePageList() {
@@ -82,6 +83,14 @@ public class CommandePageList {
 
     public void setVuereceptions(Vuereception[] vuereceptions) {
         this.vuereceptions = vuereceptions;
+    }
+
+    public Totalcommandeannee[] getTotalcommandeannees() {
+        return totalcommandeannees;
+    }
+
+    public void setTotalcommandeannees(Totalcommandeannee[] totalcommandeannees) {
+        this.totalcommandeannees = totalcommandeannees;
     }
 }
 

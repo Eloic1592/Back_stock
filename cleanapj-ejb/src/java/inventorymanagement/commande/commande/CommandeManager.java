@@ -7,10 +7,16 @@ import inventorymanagement.commande.detailcommande.Detailcommande;
 import inventorymanagement.commande.detailcommande.Detailcommandeview;
 import inventorymanagement.commande.reception.Reception;
 import inventorymanagement.commande.reception.Vuereception;
+import inventorymanagement.dashboard.dashboard.Etatdetailstockannee;
+import inventorymanagement.dashboard.dashboard.Etatstockannee;
+import inventorymanagement.materiel.typemateriel.Typemateriel;
+import inventorymanagement.mouvement.utils.Utils;
 import itusolar.prepare.HServiceManager;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class CommandeManager extends HServiceManager implements CommandeManagerSignature {
 
@@ -168,8 +174,44 @@ public class CommandeManager extends HServiceManager implements CommandeManagerS
         return data[0];
     }
 
+    public Totalcommandeannee[] gettotalcommandeannee(int annee,Connection connection) throws Exception {
+        connection = this.getConnection(connection);
+        Totalcommandeannee[] data =(Totalcommandeannee[]) CGenUtil.rechercher(new Totalcommandeannee(), new String[0], new String[0], connection, "and annee="+annee+"");
+        return data;
+    }
 
+    public Totalcommandeannee[] etatcommandeannees(int annee,Connection connection) throws Exception {
+        List<Totalcommandeannee> dataList = new ArrayList<>();
+        Totalcommandeannee[] totalcommandeannees = this.gettotalcommandeannee(annee,connection);
+        for (int mois = 1; mois <= 12; mois++) {
+            boolean found = false;
+            for(Totalcommandeannee totalcommandeannee: totalcommandeannees){
+                if(totalcommandeannee.getAnnee()==annee && totalcommandeannee.getMois()==mois){
+                    found=true;
+                    dataList.add(totalcommandeannee);
+                    break;
+                }
 
+            }
+            if (!found) {
+                Totalcommandeannee stat = new Totalcommandeannee();
+                stat.setAnnee(annee);
+                stat.setMois(mois);
+                stat.setMoisnom(Utils.getNomMois(mois));
+                stat.setTotalcommandes(0);
+                dataList.add(stat);
+            }
+
+        }
+        return dataList.toArray(new Totalcommandeannee[0]);
+    }
+
+    public CommandePageList totalcommandeannee(int annee,Connection connection) throws Exception {
+        connection = this.getConnection(connection);
+        CommandePageList commandePageList =new CommandePageList();
+        commandePageList.setTotalcommandeannees(this.etatcommandeannees(annee,connection));
+        return commandePageList;
+    }
 
 
 }

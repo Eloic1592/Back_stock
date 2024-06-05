@@ -6,6 +6,10 @@ public class Dashboard {
     Rotationstock [] rotationstocks;
     double rotation_stock;
     double valeur_rotation_stock;
+    Etatstockannee[] etatstockannee;
+    Etatdetailstockannee [] etatdetailstockannee;
+    double pourcentagebonetatstock;
+    double pourcentageabimestock;
 
     public Dashboard() {
     }
@@ -50,4 +54,35 @@ public class Dashboard {
         this.valeur_rotation_stock = valeur_rotation_stock;
     }
 
+    public double getPourcentagebonetatstock() {
+        return pourcentagebonetatstock;
+    }
+
+    public void setPourcentagebonetatstock(double pourcentagebonetatstock) {
+        this.pourcentagebonetatstock = pourcentagebonetatstock;
+    }
+
+    public double getPourcentageabimestock() {
+        return pourcentageabimestock;
+    }
+
+    public void setPourcentageabimestock(double pourcentageabimestock) {
+        this.pourcentageabimestock = pourcentageabimestock;
+    }
+
+    public Etatstockannee[] getEtatstockannee() {
+        return etatstockannee;
+    }
+
+    public void setEtatstockannee(Etatstockannee[] etatstockannee) {
+        this.etatstockannee = etatstockannee;
+    }
+
+    public Etatdetailstockannee[] getEtatdetailstockannee() {
+        return etatdetailstockannee;
+    }
+
+    public void setEtatdetailstockannee(Etatdetailstockannee[] etatdetailstockannee) {
+        this.etatdetailstockannee = etatdetailstockannee;
+    }
 }

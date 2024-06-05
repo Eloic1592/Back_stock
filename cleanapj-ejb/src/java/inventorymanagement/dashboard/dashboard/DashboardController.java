@@ -14,11 +14,19 @@ public class DashboardController extends HController {
 
     DashboardManager dashboardManager=new DashboardManager();
 
-    @HPost(url="/dashboard")
-    public void dashboard(HttpServletRequest request, HttpServletResponse response, DashboardParams dashboardParams) throws Exception {
+    @HPost(url="/etatstockannee")
+    public void etatstockannee(HttpServletRequest request, HttpServletResponse response,DashboardParams dashboardParams) throws Exception {
         this.activeJson(response);
         Connection connection = this.getConnection();
-        this.writeSuccess(response, null,this.dashboardManager.dashboard(connection)).close();
+        this.writeSuccess(response, null,this.dashboardManager.etatdestockparannee(dashboardParams.getAnnee(),connection)).close();
+        connection.close();
+    }
+
+    @HPost(url="/etatdetailstockannee")
+    public void etatdetailstockannee(HttpServletRequest request, HttpServletResponse response,DashboardParams dashboardParams) throws Exception {
+        this.activeJson(response);
+        Connection connection = this.getConnection();
+        this.writeSuccess(response, null,this.dashboardManager.etatdetaildestockparannee(dashboardParams.getAnnee(), dashboardParams.getMois(), connection)).close();
         connection.close();
     }
 
