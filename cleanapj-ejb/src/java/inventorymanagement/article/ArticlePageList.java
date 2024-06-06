@@ -6,6 +6,7 @@ public class ArticlePageList {
     Listearticle [] articles;
     Typemateriel[] typemateriels;
     Stockarticle[] stockarticles;
+    Stockarticleinventaire[] stockarticleinventaires;
     Listearticle  article;
     double sommebonetat;
     double sommeabime;
@@ -60,5 +61,13 @@ public class ArticlePageList {
 
     public void setSommeabime(double sommeabime) {
         this.sommeabime = sommeabime;
+    }
+
+    public Stockarticleinventaire[] getStockarticleinventaires() {
+        return stockarticleinventaires;
+    }
+
+    public void setStockarticleinventaires(Stockarticleinventaire[] stockarticleinventaires) {
+        this.stockarticleinventaires = stockarticleinventaires;
     }
 }

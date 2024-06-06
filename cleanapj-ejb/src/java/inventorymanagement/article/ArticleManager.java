@@ -110,6 +110,12 @@ public class ArticleManager extends HServiceManager implements ArticleManagerSig
         return data;
     }
 
+    public Stockarticleinventaire[] stockarticleinventaires(String idarticle, Connection connection) throws Exception {
+        connection=this.getConnection(connection);
+        Stockarticleinventaire[] data=(Stockarticleinventaire[])CGenUtil.rechercher(new Stockarticleinventaire(), new String[0], new String[0], connection, "and idarticle='"+idarticle+"'");
+        return data;
+    }
+
     @Override
     public ArticlePageList contentlist(Connection connection) throws Exception {
         connection=this.getConnection(connection);
@@ -146,6 +152,7 @@ public class ArticleManager extends HServiceManager implements ArticleManagerSig
         connection=this.getConnection(connection);
         ArticlePageList articlePageList=new ArticlePageList();
         articlePageList.setStockarticles(detailstockarticle(idarticle,connection));
+        articlePageList.setStockarticleinventaires(stockarticleinventaires(idarticle,connection));
         articlePageList.setSommebonetat(sommedetailbonetat(idarticle,connection));
         articlePageList.setSommeabime(sommedetailabime(idarticle,connection));
         return articlePageList;
