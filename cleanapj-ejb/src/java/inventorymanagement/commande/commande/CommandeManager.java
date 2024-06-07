@@ -125,6 +125,12 @@ public class CommandeManager extends HServiceManager implements CommandeManagerS
         return data;
     }
 
+    public VueCommande getvuecommande(String idcommande, Connection connection) throws Exception {
+        connection = this.getConnection(connection);
+        VueCommande[] data =(VueCommande[]) CGenUtil.rechercher(new VueCommande(), new String[0], new String[0], connection, "and idcommande='"+idcommande+"'");
+        return data[0];
+    }
+
 
     public CommandePageList detailcontentpage(Connection connection, String idcommande) throws Exception {
         connection = this.getConnection(connection);
@@ -210,6 +216,14 @@ public class CommandeManager extends HServiceManager implements CommandeManagerS
         connection = this.getConnection(connection);
         CommandePageList commandePageList =new CommandePageList();
         commandePageList.setTotalcommandeannees(this.etatcommandeannees(annee,connection));
+        return commandePageList;
+    }
+
+    public CommandePageList pdfcommande(String idcommande,Connection connection) throws Exception {
+        connection = this.getConnection(connection);
+        CommandePageList commandePageList =new CommandePageList();
+        commandePageList.setVueCommande(this.getvuecommande(idcommande,connection));
+        commandePageList.setDetailcommandeviews(this.getalldetailcommande(idcommande,connection));
         return commandePageList;
     }
 

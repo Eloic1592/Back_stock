@@ -115,4 +115,12 @@ public class CommandeController extends HController {
         this.writeSuccess(response, null,this.commandeManager.getreception(commandeParams.getIdreception(),connection)).close();
         connection.close();
     }
+
+    @HPost(url = "/pdfcommande")
+    public void pdfcommande(HttpServletRequest request, HttpServletResponse response,CommandeParams commandeParams) throws Exception {
+        this.activeJson(response);
+        Connection connection = this.getConnection();
+        this.writeSuccess(response, null,this.commandeManager.pdfcommande(commandeParams.getIdcommande(),connection)).close();
+        connection.close();
+    }
 }

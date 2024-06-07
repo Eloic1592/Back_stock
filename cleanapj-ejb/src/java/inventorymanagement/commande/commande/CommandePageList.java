@@ -13,6 +13,7 @@ public class CommandePageList {
     Article[] articles;
     Client[] clients;
     Commande commande;
+    VueCommande vueCommande;
     Detailcommande detailcommande;
     Vuereception[] vuereceptions;
     Totalcommandeannee[] totalcommandeannees;
@@ -91,6 +92,14 @@ public class CommandePageList {
 
     public void setTotalcommandeannees(Totalcommandeannee[] totalcommandeannees) {
         this.totalcommandeannees = totalcommandeannees;
+    }
+
+    public VueCommande getVueCommande() {
+        return vueCommande;
+    }
+
+    public void setVueCommande(VueCommande vueCommande) {
+        this.vueCommande = vueCommande;
     }
 }
 
