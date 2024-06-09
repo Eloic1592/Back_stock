@@ -1,6 +1,7 @@
 package inventorymanagement.stockage.inventorymanagement;
 
 import inventorymanagement.stockage.distribution.Distribution;
+import inventorymanagement.stockage.inventaire.Calendrierinventaire;
 import inventorymanagement.stockage.inventaire.Inventaire;
 import inventorymanagement.stockage.stockage.Stockage;
 import itusolar.controller.HController;
@@ -110,6 +111,31 @@ public class InventoryController extends HController {
         this.activeJson(response);
         Connection connection = this.getConnection();
         this.writeSuccess(response, null,this.inventoryManager.inventaireform(connection)).close();
+        connection.close();
+    }
+
+    @HPost(url="/createcalendrier")
+    public void createcalendrier(HttpServletRequest request, HttpServletResponse response, Calendrierinventaire calendrierinventaire) throws Exception {
+        this.activeJson(response);
+        Connection connection = this.getConnection();
+        this.inventoryManager.createcalendrier(calendrierinventaire, connection);
+        this.writeSuccess(response, null,"lasa ny donnees").close();
+        connection.close();
+    }
+
+    @HPost(url="/getcalendrier")
+    public void getcalendrier(HttpServletRequest request, HttpServletResponse response,InventoryParams inventoryParam) throws Exception {
+        this.activeJson(response);
+        Connection connection = this.getConnection();
+        this.writeSuccess(response, null,this.inventoryManager.getcalendrier(inventoryParam.getIdcalendrierinventaire(),connection)).close();
+        connection.close();
+    }
+
+    @HPost(url="/calendrierinventaire")
+    public void calendrierinventaire(HttpServletRequest request, HttpServletResponse response,Object o) throws Exception {
+        this.activeJson(response);
+        Connection connection = this.getConnection();
+        this.writeSuccess(response, null,this.inventoryManager.calendrier(connection)).close();
         connection.close();
     }
 }

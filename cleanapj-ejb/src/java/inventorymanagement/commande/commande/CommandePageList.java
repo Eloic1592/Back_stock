@@ -17,6 +17,7 @@ public class CommandePageList {
     Detailcommande detailcommande;
     Vuereception[] vuereceptions;
     Totalcommandeannee[] totalcommandeannees;
+    Totalcommandearticle[] totalcommandearticles;
     double somme;
 
     public CommandePageList() {
@@ -100,6 +101,14 @@ public class CommandePageList {
 
     public void setVueCommande(VueCommande vueCommande) {
         this.vueCommande = vueCommande;
+    }
+
+    public Totalcommandearticle[] getTotalcommandearticles() {
+        return totalcommandearticles;
+    }
+
+    public void setTotalcommandearticles(Totalcommandearticle[] totalcommandearticles) {
+        this.totalcommandearticles = totalcommandearticles;
     }
 }
 

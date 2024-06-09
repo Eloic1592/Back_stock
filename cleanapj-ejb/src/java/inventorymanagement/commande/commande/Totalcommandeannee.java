@@ -7,6 +7,7 @@ public class Totalcommandeannee extends MappedInteger {
     int mois;
     String moisnom;
     double totalcommandes;
+    double moyennecommandes;
 
 
     public Totalcommandeannee() {
@@ -43,5 +44,13 @@ public class Totalcommandeannee extends MappedInteger {
 
     public void setTotalcommandes(double totalcommandes) {
         this.totalcommandes = totalcommandes;
+    }
+
+    public double getMoyennecommandes() {
+        return moyennecommandes;
+    }
+
+    public void setMoyennecommandes(double moyennecommandes) {
+        this.moyennecommandes = moyennecommandes;
     }
 }

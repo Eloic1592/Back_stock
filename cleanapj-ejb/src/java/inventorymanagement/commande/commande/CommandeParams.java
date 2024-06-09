@@ -5,6 +5,7 @@ public class CommandeParams {
     String iddetailcommande;
     String idreception;
     int annee;
+    int mois;
 
 
 
@@ -41,5 +42,13 @@ public class CommandeParams {
 
     public void setAnnee(int annee) {
         this.annee = annee;
+    }
+
+    public int getMois() {
+        return mois;
+    }
+
+    public void setMois(int mois) {
+        this.mois = mois;
     }
 }

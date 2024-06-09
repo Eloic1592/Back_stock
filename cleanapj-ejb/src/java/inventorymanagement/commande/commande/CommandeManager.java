@@ -2,6 +2,7 @@ package inventorymanagement.commande.commande;
 
 import bean.CGenUtil;
 import inventorymanagement.article.ArticleManager;
+import inventorymanagement.article.Listearticle;
 import inventorymanagement.client.ClientManager;
 import inventorymanagement.commande.detailcommande.Detailcommande;
 import inventorymanagement.commande.detailcommande.Detailcommandeview;
@@ -13,6 +14,7 @@ import inventorymanagement.materiel.typemateriel.Typemateriel;
 import inventorymanagement.mouvement.utils.Utils;
 import itusolar.prepare.HServiceManager;
 
+import javax.rmi.CORBA.Util;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,6 +25,7 @@ public class CommandeManager extends HServiceManager implements CommandeManagerS
     CommandeManagerSignature commandeManagerSignature;
     ClientManager clientManager= new ClientManager();
     ArticleManager articleManager= new ArticleManager();
+    static int debutannee=2011;
 
     public CommandeManager() {
         this.commandeManagerSignature = commandeManagerSignature;
@@ -186,6 +189,13 @@ public class CommandeManager extends HServiceManager implements CommandeManagerS
         return data;
     }
 
+    public Totalcommandearticle[] gettotalcommandearticle(int annee,int mois,Connection connection) throws Exception {
+        annee=(annee==0)?Utils.getCurrentYear():annee;
+        connection = this.getConnection(connection);
+        Totalcommandearticle[] data =(Totalcommandearticle[]) CGenUtil.rechercher(new Totalcommandearticle(), new String[0], new String[0], connection, "and annee="+annee+" and mois="+mois+"");
+        return data;
+    }
+
     public Totalcommandeannee[] etatcommandeannees(int annee,Connection connection) throws Exception {
         List<Totalcommandeannee> dataList = new ArrayList<>();
         Totalcommandeannee[] totalcommandeannees = this.gettotalcommandeannee(annee,connection);
@@ -212,13 +222,50 @@ public class CommandeManager extends HServiceManager implements CommandeManagerS
         return dataList.toArray(new Totalcommandeannee[0]);
     }
 
-    public CommandePageList totalcommandeannee(int annee,Connection connection) throws Exception {
+    public Totalcommandearticle[] etatcommandearticleannee(int annee,int mois,Connection connection) throws Exception {
+        List<Totalcommandearticle> dataList = new ArrayList<>();
+        Totalcommandearticle[] totalcommandearticles = this.gettotalcommandearticle(annee, mois, connection);
+        Listearticle [] listearticles=articleManager.getlistarticle(connection);
+        for (Listearticle listearticle : listearticles) {
+            boolean found = false;
+            for (Totalcommandearticle totalcommandearticle : totalcommandearticles) {
+                if (totalcommandearticle.getAnnee() == annee && totalcommandearticle.getMois() == mois && totalcommandearticle.getIdarticle().equals(listearticle.getIdarticle())) {
+                    found = true;
+                    dataList.add(totalcommandearticle);
+                    break;
+                }
+            }
+                if (!found) {
+                    Totalcommandearticle stat = new Totalcommandearticle();
+                    stat.setAnnee(annee);
+                    stat.setMois(mois);
+                    stat.setMoisnom(Utils.getNomMois(mois));
+                    stat.setMoisnom(Utils.getNomMois(mois));
+                    stat.setIdarticle(listearticle.getIdarticle());
+                    stat.setMarque(listearticle.getMarque());
+                    stat.setModele(listearticle.getModele());
+                    stat.setTypemateriel(listearticle.getTypemateriel());
+                    stat.setCodearticle(listearticle.getCodearticle());
+                    stat.setVal(listearticle.getVal());
+                    stat.setQuantitetotale(0);
+                    dataList.add(stat);
+                }
+
+        }
+            return dataList.toArray(new Totalcommandearticle[0]);
+    }
+
+//    Total commande par annee
+//    Commande total groupee par article par mois par annee
+    public CommandePageList totalcommandeannee(int annee,int mois,Connection connection) throws Exception {
         connection = this.getConnection(connection);
         CommandePageList commandePageList =new CommandePageList();
         commandePageList.setTotalcommandeannees(this.etatcommandeannees(annee,connection));
+        commandePageList.setTotalcommandearticles(this.etatcommandearticleannee(annee,mois,connection));
         return commandePageList;
     }
 
+//    PDF des commandes
     public CommandePageList pdfcommande(String idcommande,Connection connection) throws Exception {
         connection = this.getConnection(connection);
         CommandePageList commandePageList =new CommandePageList();
@@ -226,6 +273,9 @@ public class CommandeManager extends HServiceManager implements CommandeManagerS
         commandePageList.setDetailcommandeviews(this.getalldetailcommande(idcommande,connection));
         return commandePageList;
     }
+
+
+
 
 
 }

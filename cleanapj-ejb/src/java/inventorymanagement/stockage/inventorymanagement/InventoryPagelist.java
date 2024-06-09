@@ -5,6 +5,7 @@ import inventorymanagement.depot.Depot;
 import inventorymanagement.emplacement.Listeemplacement;
 import inventorymanagement.stockage.distribution.Distribution;
 import inventorymanagement.stockage.distribution.Vuedistribution;
+import inventorymanagement.stockage.inventaire.Calendrierinventaire;
 import inventorymanagement.stockage.inventaire.Inventaire;
 import inventorymanagement.stockage.inventaire.Vueinventaire;
 import inventorymanagement.stockage.stockage.Stockage;
@@ -20,6 +21,8 @@ public class InventoryPagelist {
     Distribution distribution;
     Stockage stockage;
     Inventaire inventaire;
+    Calendrierinventaire[] calendrierinventaires;
+    Calendrierinventaire[] calendriercree;
 
     public InventoryPagelist() {
     }
@@ -94,5 +97,21 @@ public class InventoryPagelist {
 
     public void setListeemplacements(Listeemplacement[] listeemplacements) {
         this.listeemplacements = listeemplacements;
+    }
+
+    public Calendrierinventaire[] getCalendrierinventaires() {
+        return calendrierinventaires;
+    }
+
+    public void setCalendrierinventaires(Calendrierinventaire[] calendrierinventaires) {
+        this.calendrierinventaires = calendrierinventaires;
+    }
+
+    public Calendrierinventaire[] getCalendriercree() {
+        return calendriercree;
+    }
+
+    public void setCalendriercree(Calendrierinventaire[] calendriercree) {
+        this.calendriercree = calendriercree;
     }
 }

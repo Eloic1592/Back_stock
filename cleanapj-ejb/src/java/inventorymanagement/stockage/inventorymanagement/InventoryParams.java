@@ -4,6 +4,7 @@ public class InventoryParams {
     String idstockage;
     String iddistribution;
     String idinventaire;
+    String idcalendrierinventaire;
 
     public InventoryParams() {
     }
@@ -30,5 +31,13 @@ public class InventoryParams {
 
     public void setIdinventaire(String idinventaire) {
         this.idinventaire = idinventaire;
+    }
+
+    public String getIdcalendrierinventaire() {
+        return idcalendrierinventaire;
+    }
+
+    public void setIdcalendrierinventaire(String idcalendrierinventaire) {
+        this.idcalendrierinventaire = idcalendrierinventaire;
     }
 }

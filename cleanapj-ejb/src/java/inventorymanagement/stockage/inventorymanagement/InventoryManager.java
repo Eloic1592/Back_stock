@@ -7,6 +7,7 @@ import inventorymanagement.depot.DepotManager;
 import inventorymanagement.emplacement.EmplacementManager;
 import inventorymanagement.stockage.distribution.Distribution;
 import inventorymanagement.stockage.distribution.Vuedistribution;
+import inventorymanagement.stockage.inventaire.Calendrierinventaire;
 import inventorymanagement.stockage.inventaire.Inventaire;
 import inventorymanagement.stockage.inventaire.Vueinventaire;
 import inventorymanagement.stockage.stockage.Stockage;
@@ -168,6 +169,44 @@ public class InventoryManager extends HServiceManager implements InventorySignat
         connection=this.getConnection(connection);
         InventoryPagelist inventoryPagelist=new InventoryPagelist();
         inventoryPagelist.setArticles(articleManager.getall(connection));
+        return inventoryPagelist;
+    }
+
+//    Calendrier
+    public void createcalendrier(Calendrierinventaire calendrierinventaire, Connection connection) throws Exception {
+    connection = this.getConnection(connection);
+        if (calendrierinventaire.getIdcalendrierinventaire()!=null) {
+            calendrierinventaire.updateToTable(connection);
+            return;
+        }else {
+            calendrierinventaire.construirePK(connection);
+            CGenUtil.save(calendrierinventaire, connection);
+
+         }
+    }
+    public Calendrierinventaire getcalendrier(String idcalendrier,Connection connection) throws Exception {
+        connection=this.getConnection(connection);
+        Calendrierinventaire[] data=(Calendrierinventaire[])CGenUtil.rechercher(new Calendrierinventaire(), null, null, connection, "and idcalendrierinventaire='"+idcalendrier+"'");
+        return data[0];
+    }
+
+    public Calendrierinventaire[] calendriercree(Connection connection) throws Exception {
+        connection=this.getConnection(connection);
+        Calendrierinventaire[] data=(Calendrierinventaire[])CGenUtil.rechercher(new Calendrierinventaire(), null, null, connection, "and rownum<=5");
+        return data;
+    }
+
+    public Calendrierinventaire[] listecalendrierinventaire(Connection connection) throws Exception {
+        connection=this.getConnection(connection);
+        Calendrierinventaire[] data=(Calendrierinventaire[])CGenUtil.rechercher(new Calendrierinventaire(), null, null, connection, "and TRUNC(datecalendrier) = TRUNC(SYSDATE)");
+        return data;
+    }
+
+    public InventoryPagelist calendrier(Connection connection) throws Exception{
+        connection=this.getConnection(connection);
+        InventoryPagelist inventoryPagelist=new InventoryPagelist();
+        inventoryPagelist.setCalendriercree(calendriercree(connection));
+        inventoryPagelist.setCalendrierinventaires(listecalendrierinventaire(connection));
         return inventoryPagelist;
     }
 

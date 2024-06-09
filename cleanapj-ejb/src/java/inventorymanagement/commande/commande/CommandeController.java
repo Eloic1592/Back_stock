@@ -86,7 +86,7 @@ public class CommandeController extends HController {
     public void totalcommandeannee(HttpServletRequest request, HttpServletResponse response, CommandeParams commandeParams) throws Exception {
         this.activeJson(response);
         Connection connection = this.getConnection();
-        this.writeSuccess(response, null,this.commandeManager.totalcommandeannee(commandeParams.getAnnee(),connection)).close();
+        this.writeSuccess(response, null,this.commandeManager.totalcommandeannee(commandeParams.getAnnee(),commandeParams.getMois(),connection)).close();
         connection.close();
     }
 
