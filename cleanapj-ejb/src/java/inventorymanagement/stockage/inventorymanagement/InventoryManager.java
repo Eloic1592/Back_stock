@@ -210,5 +210,13 @@ public class InventoryManager extends HServiceManager implements InventorySignat
         return inventoryPagelist;
     }
 
+    public InventoryPagelist calendriernotif(Connection connection) throws Exception{
+        connection=this.getConnection(connection);
+        InventoryPagelist inventoryPagelist=new InventoryPagelist();
+        inventoryPagelist.setCalendrierinventaires(listecalendrierinventaire(connection));
+        return inventoryPagelist;
+    }
+
+
 
 }

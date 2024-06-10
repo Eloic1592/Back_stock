@@ -138,4 +138,12 @@ public class InventoryController extends HController {
         this.writeSuccess(response, null,this.inventoryManager.calendrier(connection)).close();
         connection.close();
     }
+
+    @HPost(url="/calendriernotif")
+    public void calendriernotif(HttpServletRequest request, HttpServletResponse response,Object o) throws Exception {
+        this.activeJson(response);
+        Connection connection = this.getConnection();
+        this.writeSuccess(response, null,this.inventoryManager.calendriernotif(connection)).close();
+        connection.close();
+    }
 }
