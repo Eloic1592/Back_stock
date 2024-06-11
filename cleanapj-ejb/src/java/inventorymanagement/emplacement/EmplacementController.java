@@ -45,4 +45,12 @@ public class EmplacementController extends HController {
         this.writeSuccess(response, null,this.emplacementManager.getlistemplacement(emplacementParams.getIddepot(),connection)).close();
         connection.close();
     }
+    @HPost(url="/listemplacement")
+    public void listemplacement(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
+        this.activeJson(response);
+        Connection connection = this.getConnection();
+        this.writeSuccess(response, null,this.emplacementManager.contentlist(connection)).close();
+        connection.close();
+    }
+
 }
