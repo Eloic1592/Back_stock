@@ -11,10 +11,12 @@ public class MaterielPageList {
     Categoriemateriel [] categoriemateriels;
     Listemateriel[] listemateriels;
     Stockmateriel [] stockmateriels;
+    Stocktypemateriel [] stocktypemateriels;
     UtilisationMateriel [] utilisationMateriels;
     Listemateriel listemateriel;
-    double count_materiel;
-
+    double countmateriel;
+    double countmateriellibre;
+    double countmaterieloccupe;
 
 
     public MaterielPageList() {
@@ -84,11 +86,35 @@ public class MaterielPageList {
         this.listemateriel = listemateriel;
     }
 
-    public double getCount_materiel() {
-        return count_materiel;
+    public double getCountmateriel() {
+        return countmateriel;
     }
 
-    public void setCount_materiel(double count_materiel) {
-        this.count_materiel = count_materiel;
+    public void setCountmateriel(double countmateriel) {
+        this.countmateriel = countmateriel;
+    }
+
+    public double getCountmateriellibre() {
+        return countmateriellibre;
+    }
+
+    public void setCountmateriellibre(double countmateriellibre) {
+        this.countmateriellibre = countmateriellibre;
+    }
+
+    public double getCountmaterieloccupe() {
+        return countmaterieloccupe;
+    }
+
+    public void setCountmaterieloccupe(double countmaterieloccupe) {
+        this.countmaterieloccupe = countmaterieloccupe;
+    }
+
+    public Stocktypemateriel[] getStocktypemateriels() {
+        return stocktypemateriels;
+    }
+
+    public void setStocktypemateriels(Stocktypemateriel[] stocktypemateriels) {
+        this.stocktypemateriels = stocktypemateriels;
     }
 }

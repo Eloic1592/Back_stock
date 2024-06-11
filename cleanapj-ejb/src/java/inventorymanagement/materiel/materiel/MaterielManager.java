@@ -66,6 +66,12 @@ public class MaterielManager extends HServiceManager implements  MaterielManager
         Stockmateriel[] data=(Stockmateriel[])CGenUtil.rechercher(new Stockmateriel(), new String[0], new String[0], connection, "");
         return data;
     }
+    public Stocktypemateriel[] getstocktypemateriel(Connection connection) throws Exception {
+        connection=this.getConnection(connection);
+        Stocktypemateriel[] data=(Stocktypemateriel[])CGenUtil.rechercher(new Stocktypemateriel(), new String[0], new String[0], connection, "");
+        return data;
+    }
+
 
     public UtilisationMateriel[] getstockutilisation(Connection connection) throws Exception {
         connection=this.getConnection(connection);
@@ -107,6 +113,25 @@ public class MaterielManager extends HServiceManager implements  MaterielManager
         }
         return count;
     }
+    public double materiellibre(Connection connection) throws Exception {
+        double count=0;
+        connection=this.getConnection(connection);
+        Listemateriel[] data=(Listemateriel[])CGenUtil.rechercher(new Listemateriel(), new String[0], new String[0], connection, "and statutmateriel=0");
+        for(Listemateriel datas: data){
+            count++;
+        }
+        return count;
+    }
+    public double materieloccupe(Connection connection) throws Exception {
+        double count=0;
+        connection=this.getConnection(connection);
+        Listemateriel[] data=(Listemateriel[])CGenUtil.rechercher(new Listemateriel(), new String[0], new String[0], connection, "and statutmateriel=1");
+        for(Listemateriel datas: data){
+            count++;
+        }
+        return count;
+    }
+
 
 
     public MaterielPageList stocklist(Connection connection) throws Exception {
@@ -114,7 +139,11 @@ public class MaterielManager extends HServiceManager implements  MaterielManager
         MaterielPageList materielPageList=new MaterielPageList();
         materielPageList.setStockmateriels(this.getstockmateriel(connection));
         materielPageList.setTypemateriels(this.typematerielManager.getall(connection));
-        materielPageList.setCount_materiel(this.countmateriel(connection));
+        materielPageList.setCountmateriel(this.countmateriel(connection));
+        materielPageList.setCountmateriellibre(this.materiellibre(connection));
+        materielPageList.setCountmaterieloccupe(this.materieloccupe(connection));
+        materielPageList.setStocktypemateriels(this.getstocktypemateriel(connection));
+
        return materielPageList;
     }
     public MaterielPageList stockmateriellist(Connection connection) throws Exception {

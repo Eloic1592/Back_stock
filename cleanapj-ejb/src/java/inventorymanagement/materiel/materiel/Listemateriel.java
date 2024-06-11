@@ -8,6 +8,7 @@ public class Listemateriel extends MappedInteger {
     String idmateriel;
     String idtypemateriel;
     String typemateriel;
+    String val;
     String marque;
     String modele;
     String numserie;
@@ -16,6 +17,7 @@ public class Listemateriel extends MappedInteger {
     double caution;
     String signature;
     int etat;
+    int statutmateriel;
     String statut;
 
     public Listemateriel() {
@@ -129,5 +131,21 @@ public class Listemateriel extends MappedInteger {
 
     public void setEtat(int etat) {
         this.etat = etat;
+    }
+
+    public String getVal() {
+        return val;
+    }
+
+    public void setVal(String val) {
+        this.val = val;
+    }
+
+    public int getStatutmateriel() {
+        return statutmateriel;
+    }
+
+    public void setStatutmateriel(int statutmateriel) {
+        this.statutmateriel = statutmateriel;
     }
 }
