@@ -121,7 +121,7 @@ public class UtilDB {
 //                TimeZone.setDefault(timeZone);
                 Class.forName("oracle.jdbc.driver.OracleDriver");
 
-                conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "stock", "stock");
+                conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "stock", "stock1");
 //                conn = DriverManager.getConnection("jdbc:oracle:thin:@26.41.116.127:1521:ORCL", "tiatanindrazana", "tiatanindrazana");
 
                 setDefaulteDateFormat(conn);
