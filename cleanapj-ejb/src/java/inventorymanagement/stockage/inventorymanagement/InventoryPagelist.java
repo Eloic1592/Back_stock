@@ -21,6 +21,7 @@ public class InventoryPagelist {
     Distribution distribution;
     Stockage stockage;
     Inventaire inventaire;
+    Calendrierinventaire[] allinventaires;
     Calendrierinventaire[] calendrierinventaires;
     Calendrierinventaire[] calendriercree;
 
@@ -113,5 +114,13 @@ public class InventoryPagelist {
 
     public void setCalendriercree(Calendrierinventaire[] calendriercree) {
         this.calendriercree = calendriercree;
+    }
+
+    public Calendrierinventaire[] getAllinventaires() {
+        return allinventaires;
+    }
+
+    public void setAllinventaires(Calendrierinventaire[] allinventaires) {
+        this.allinventaires = allinventaires;
     }
 }

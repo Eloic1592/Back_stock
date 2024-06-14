@@ -190,6 +190,12 @@ public class InventoryManager extends HServiceManager implements InventorySignat
         return data[0];
     }
 
+    public Calendrierinventaire[] getallinventaire(Connection connection) throws Exception {
+        connection=this.getConnection(connection);
+        Calendrierinventaire[] data=(Calendrierinventaire[])CGenUtil.rechercher(new Calendrierinventaire(), null, null, connection, "");
+        return data;
+    }
+
     public Calendrierinventaire[] calendriercree(Connection connection) throws Exception {
         connection=this.getConnection(connection);
         Calendrierinventaire[] data=(Calendrierinventaire[])CGenUtil.rechercher(new Calendrierinventaire(), null, null, connection, "and rownum<=5");
@@ -207,6 +213,7 @@ public class InventoryManager extends HServiceManager implements InventorySignat
         InventoryPagelist inventoryPagelist=new InventoryPagelist();
         inventoryPagelist.setCalendriercree(calendriercree(connection));
         inventoryPagelist.setCalendrierinventaires(listecalendrierinventaire(connection));
+        inventoryPagelist.setAllinventaires(getallinventaire(connection));
         return inventoryPagelist;
     }
 

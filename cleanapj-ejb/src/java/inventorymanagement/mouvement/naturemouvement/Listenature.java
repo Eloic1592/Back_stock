@@ -5,8 +5,6 @@ import itusolar.prepare.MappedInteger;
 public class Listenature extends MappedInteger {
     String idnaturemouvement;
     String naturemouvement;
-    String typemouvement;
-    int type;
 
 
     public Listenature() {
@@ -29,19 +27,4 @@ public class Listenature extends MappedInteger {
         this.naturemouvement = naturemouvement;
     }
 
-    public String getTypemouvement() {
-        return typemouvement;
-    }
-
-    public void setTypemouvement(String typemouvement) {
-        this.typemouvement = typemouvement;
-    }
-
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
-    }
 }
