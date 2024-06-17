@@ -420,16 +420,30 @@ public class DashboardManager extends HServiceManager implements DashboardManang
 
     @Override
     public FIFO[] getFIFO(Connection connection) throws Exception {
-        return new FIFO[0];
+        connection = this.getConnection(connection);
+        FIFO[] data=(FIFO[])CGenUtil.rechercher(new FIFO(), null, null, connection, "");
+        return data;
     }
 
     @Override
     public LIFO[] getLIFO(Connection connection) throws Exception {
-        return new LIFO[0];
+        connection = this.getConnection(connection);
+        LIFO[] data=(LIFO[])CGenUtil.rechercher(new LIFO(), null, null, connection, "");
+        return data;
     }
 
     @Override
     public Rotationstock[] getrotation(Connection connection) throws Exception {
-        return new Rotationstock[0];
+        connection = this.getConnection(connection);
+        Rotationstock[] data=(Rotationstock[])CGenUtil.rechercher(new Rotationstock(), null, null, connection, "");
+        return data;
+    }
+
+    public Dashboard  dashboard(Connection connection) throws Exception{
+        Dashboard dashboard =new Dashboard();
+        dashboard.setLifos(getLIFO(connection));
+        dashboard.setFifos(getFIFO(connection));
+        dashboard.setRotationstocks(getrotation(connection));
+        return dashboard;
     }
 }

@@ -6,8 +6,8 @@ public class Cyclemouvement extends MappedInteger {
     int annee;
     int mois;
     String mois_nom;
-    double entree;
-    double sortie;
+    String entree;
+    String sortie;
     String idnaturemouvement;
     String naturemouvement;
 
@@ -31,19 +31,19 @@ public class Cyclemouvement extends MappedInteger {
         this.mois = mois;
     }
 
-    public double getEntree() {
+    public String getEntree() {
         return entree;
     }
 
-    public void setEntree(double entree) {
+    public void setEntree(String entree) {
         this.entree = entree;
     }
 
-    public double getSortie() {
+    public String getSortie() {
         return sortie;
     }
 
-    public void setSortie(double sortie) {
+    public void setSortie(String sortie) {
         this.sortie = sortie;
     }
 

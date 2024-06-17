@@ -346,6 +346,7 @@ public class NaturemouvementManager extends HServiceManager implements Naturemou
                             found = true;
                             data.setEntree(cyclemouvement.getEntree());
                             data.setSortie(cyclemouvement.getSortie());
+
                             break;
                         }
                     }
@@ -355,11 +356,11 @@ public class NaturemouvementManager extends HServiceManager implements Naturemou
                         stat.setAnnee(annee);
                         stat.setMois_nom(Utils.getNomMois(mois));
                         stat.setMois(mois);
-                        stat.setEntree(0);
-                        stat.setSortie(0);
+                        stat.setEntree("0");
+                        stat.setSortie("0");
                         stat.setIdnaturemouvement(data.getIdnaturemouvement());
                         stat.setNaturemouvement(data.getNaturemouvement());
-                        System.out.println(stat.getAnnee() + "annee" + stat.getMois() + "mois tsy misy");
+//                        System.out.println(stat.getAnnee() + "annee" + stat.getMois() + "mois tsy misy");
                         dataList.add(stat);
                     } else {
                         // Création d'un objet Statnaturemouvement avec des valeurs par défaut (0 pour depense et gain)

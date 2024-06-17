@@ -30,6 +30,14 @@ public class DashboardController extends HController {
         connection.close();
     }
 
+    @HPost(url="/dashboard")
+    public void dashboard(HttpServletRequest request, HttpServletResponse response,DashboardParams dashboardParams) throws Exception {
+        this.activeJson(response);
+        Connection connection = this.getConnection();
+        this.writeSuccess(response, null,this.dashboardManager.dashboard(connection)).close();
+        connection.close();
+    }
+
 
 
 }
