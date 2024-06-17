@@ -13,7 +13,6 @@ public class Mouvementstock extends MappedInteger {
     Timestamp datedepot;
     int typemouvement;
     String idnaturemouvement;
-    String idetudiant;
     int statut;
     Mouvementphysique [] mouvementphysiques;
     Mouvementfictif [] mouvementfictifs;
@@ -21,6 +20,7 @@ public class Mouvementstock extends MappedInteger {
     public Mouvementstock() {
         super.setNomTable("mouvementstock");
     }
+    String idetudiant;
 
     @Override
     @JsonIgnore

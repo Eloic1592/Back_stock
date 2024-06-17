@@ -163,7 +163,7 @@ public class MouvementstockManager extends HServiceManager implements Mouvements
 
     public Mouvementstockview[] getliststockfictif(Connection connection) throws Exception {
         connection=this.getConnection(connection);
-        Object[] data=CGenUtil.rechercher(new Mouvementstockview(), new String[0], new String[0], connection, " AND TYPEMOUVEMENT=0");
+        Object[] data=CGenUtil.rechercher(new Mouvementstockview(), new String[0], new String[0], connection, "");
         return castdatamvt(data);
     }
 

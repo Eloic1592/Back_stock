@@ -9,16 +9,18 @@ public class Mouvementphysiqueview extends Mouvementphysique {
     Timestamp datededepot;
     int typemouvement;
     String mouvement;
+    String idnaturemouvement;
     String naturemouvement;
     String idarticle;
     String marque;
     String modele;
+    String codearticle;
     double quantite;
     double pu;
     double total;
-    double restestock;
     String iddepot;
     String depot;
+    String codedep;
     String commentaire;
     String description;
     int statut;
@@ -140,14 +142,6 @@ public class Mouvementphysiqueview extends Mouvementphysique {
         this.statut = statut;
     }
 
-    public double getRestestock() {
-        return restestock;
-    }
-
-    public void setRestestock(double restestock) {
-        this.restestock = restestock;
-    }
-
     @Override
     public int getTypemouvement() {
         return typemouvement;
@@ -184,5 +178,21 @@ public class Mouvementphysiqueview extends Mouvementphysique {
 
     public void setSomme(double somme) {
         this.somme = somme;
+    }
+
+    public String getCodearticle() {
+        return codearticle;
+    }
+
+    public void setCodearticle(String codearticle) {
+        this.codearticle = codearticle;
+    }
+
+    public String getCodedep() {
+        return codedep;
+    }
+
+    public void setCodedep(String codedep) {
+        this.codedep = codedep;
     }
 }

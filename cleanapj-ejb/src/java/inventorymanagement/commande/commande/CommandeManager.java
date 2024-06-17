@@ -232,6 +232,7 @@ public class CommandeManager extends HServiceManager implements CommandeManagerS
                 if (totalcommandearticle.getAnnee() == annee && totalcommandearticle.getMois() == mois && totalcommandearticle.getIdarticle().equals(listearticle.getIdarticle())) {
                     found = true;
                     dataList.add(totalcommandearticle);
+                    System.out.println(totalcommandearticle.getQuantitetotale());
                     break;
                 }
             }
@@ -239,7 +240,6 @@ public class CommandeManager extends HServiceManager implements CommandeManagerS
                     Totalcommandearticle stat = new Totalcommandearticle();
                     stat.setAnnee(annee);
                     stat.setMois(mois);
-                    stat.setMoisnom(Utils.getNomMois(mois));
                     stat.setMoisnom(Utils.getNomMois(mois));
                     stat.setIdarticle(listearticle.getIdarticle());
                     stat.setMarque(listearticle.getMarque());

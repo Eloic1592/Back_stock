@@ -14,7 +14,6 @@ public class Naturemouvement extends MappedInteger {
 
     String idnaturemouvement;
     String naturemouvement;
-    int typemouvement;
 
     public Naturemouvement() {
         super.setNomTable("naturemouvement");
@@ -55,12 +54,4 @@ public class Naturemouvement extends MappedInteger {
         this.naturemouvement = naturemouvement;
     }
 
-    public int getTypemouvement() {
-        return typemouvement;
-    }
-
-    public void setTypemouvement(int typemouvement) {
-        this.typemouvement = typemouvement;
-    }
-    
 }

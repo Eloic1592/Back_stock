@@ -55,13 +55,13 @@ public class NaturemouvementManager extends HServiceManager implements Naturemou
 
     public Naturemouvement[] getmouvementphysiques(Connection connection) throws Exception {
         connection = this.getConnection(connection);
-        Naturemouvement[] data = (Naturemouvement[])CGenUtil.rechercher(new Naturemouvement(), new String[0], new String[0], connection, "and typemouvement=1");
+        Naturemouvement[] data = (Naturemouvement[])CGenUtil.rechercher(new Naturemouvement(), new String[0], new String[0], connection, "");
         return data;
     }
 
     public Naturemouvement[] getmouvementfictif(Connection connection) throws Exception {
         connection = this.getConnection(connection);
-        Naturemouvement[] data =(Naturemouvement[]) CGenUtil.rechercher(new Naturemouvement(), new String[0], new String[0], connection, "and typemouvement=0");
+        Naturemouvement[] data =(Naturemouvement[]) CGenUtil.rechercher(new Naturemouvement(), new String[0], new String[0], connection, "");
         return data;
     }
 

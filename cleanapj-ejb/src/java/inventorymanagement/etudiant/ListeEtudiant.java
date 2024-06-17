@@ -11,6 +11,8 @@ public class ListeEtudiant extends MappedInteger {
     String nom;
     String prenom;
     String mail;
+    String adresse;
+    String contact;
     String sexe;
 
     public ListeEtudiant() {
@@ -52,6 +54,22 @@ public class ListeEtudiant extends MappedInteger {
 
     public String getSexe() {
         return sexe;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     public void setSexe(String sexe) {
