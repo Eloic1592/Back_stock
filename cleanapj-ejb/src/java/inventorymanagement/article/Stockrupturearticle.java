@@ -7,6 +7,7 @@ public class Stockrupturearticle extends MappedInteger {
     String marque;
     String modele;
     String description;
+    String codearticle;
     double taux_rupture_stock;
 
     public Stockrupturearticle() {
@@ -62,5 +63,13 @@ public class Stockrupturearticle extends MappedInteger {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCodearticle() {
+        return codearticle;
+    }
+
+    public void setCodearticle(String codearticle) {
+        this.codearticle = codearticle;
     }
 }
