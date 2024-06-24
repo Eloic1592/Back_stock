@@ -1,7 +1,9 @@
 package inventorymanagement.mouvement.mouvementstock;
 
 import bean.CGenUtil;
+import inventorymanagement.article.Article;
 import inventorymanagement.article.ArticleManager;
+import inventorymanagement.article.Listearticle;
 import inventorymanagement.depot.DepotManager;
 import inventorymanagement.etudiant.EtudiantManager;
 import inventorymanagement.materiel.materiel.MaterielManager;
@@ -32,6 +34,7 @@ public class MouvementstockManager extends HServiceManager implements Mouvements
     @Override
     public void createmouvementfictif(Mouvementstock mouvementstocks, Connection connection) throws Exception {
         connection = this.getConnection(connection);
+
         if (mouvementstocks.getIdmouvementstock()!=null) {
             mouvementstocks.updateToTable(connection);
             return;
@@ -48,14 +51,16 @@ public class MouvementstockManager extends HServiceManager implements Mouvements
         connection = this.getConnection(connection);
 //        double total=((mouvementphysique.getQuantite()*mouvementphysique.getPu())*mouvementphysique.getTypemouvement()*-1);
 //        mouvementphysique.setTotal(total);
-
+        Article article=this.articleManager.getsinglearticle(mouvementphysique.getIdarticle(),connection);
+        article.setQuantitestock(article.getQuantitestock()+mouvementphysique.getQuantite());
         if (mouvementphysique.getIddetailmouvementphysique()!=null) {
                 mouvementphysique.updateToTable(connection);
+                articleManager.create(article,connection);
             return;
         }else {
             mouvementphysique.construirePK(connection);
             CGenUtil.save(mouvementphysique, connection);
-
+            articleManager.create(article,connection);
         }
     }
 

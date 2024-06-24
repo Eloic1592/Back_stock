@@ -22,6 +22,7 @@ public class Article extends MappedInteger {
     double prix;
     double quantitestock;
     String codearticle;
+    double stocksecurite;
 
 
     public Article() {
@@ -133,5 +134,13 @@ public class Article extends MappedInteger {
 
     public void setCodearticle(String codearticle) {
         this.codearticle = codearticle;
+    }
+
+    public double getStocksecurite() {
+        return stocksecurite;
+    }
+
+    public void setStocksecurite(double stocksecurite) {
+        this.stocksecurite = stocksecurite;
     }
 }

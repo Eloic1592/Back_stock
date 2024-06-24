@@ -1,17 +1,15 @@
 package inventorymanagement.stockage.distribution;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import itusolar.prepare.MappedInteger;
 
-import java.sql.Connection;
 import java.sql.Timestamp;
 
-public class Vuedistribution extends MappedInteger {
+public class Vuedistributionmateriel extends MappedInteger {
     String iddistribution;
-    String idarticle;
+    String idmateriel;
     String marque;
     String modele;
-    String codearticle;
+    String numserie;
     String codedep;
     String iddepot;
     String idemplacement;
@@ -21,12 +19,10 @@ public class Vuedistribution extends MappedInteger {
     String codeemp;
     int statut;
     String etat;
-    String marquemat;
-    String modelemat;
-    String numserie;
 
-    public Vuedistribution() {
-        setNomTable("vue_distribution");
+
+    public Vuedistributionmateriel() {
+        setNomTable("vue_distribution_materiel");
     }
 
     @Override
@@ -47,13 +43,6 @@ public class Vuedistribution extends MappedInteger {
         this.iddistribution = iddistribution;
     }
 
-    public String getIdarticle() {
-        return idarticle;
-    }
-
-    public void setIdarticle(String idarticle) {
-        this.idarticle = idarticle;
-    }
 
     public double getQuantite() {
         return quantite;
@@ -111,13 +100,6 @@ public class Vuedistribution extends MappedInteger {
         this.statut = statut;
     }
 
-    public String getCodearticle() {
-        return codearticle;
-    }
-
-    public void setCodearticle(String codearticle) {
-        this.codearticle = codearticle;
-    }
 
     public String getCodeemp() {
         return codeemp;
@@ -151,21 +133,6 @@ public class Vuedistribution extends MappedInteger {
         this.idemplacement = idemplacement;
     }
 
-    public String getMarquemat() {
-        return marquemat;
-    }
-
-    public void setMarquemat(String marquemat) {
-        this.marquemat = marquemat;
-    }
-
-    public String getModelemat() {
-        return modelemat;
-    }
-
-    public void setModelemat(String modelemat) {
-        this.modelemat = modelemat;
-    }
 
     public String getNumserie() {
         return numserie;
@@ -173,5 +140,13 @@ public class Vuedistribution extends MappedInteger {
 
     public void setNumserie(String numserie) {
         this.numserie = numserie;
+    }
+
+    public String getIdmateriel() {
+        return idmateriel;
+    }
+
+    public void setIdmateriel(String idmateriel) {
+        this.idmateriel = idmateriel;
     }
 }

@@ -17,6 +17,7 @@ public class Distribution extends MappedInteger {
     String idemplacement;
     int statut;
     int etatdistribue;
+    String idmateriel;
 
     public Distribution() {
         this.setNomTable("distribution");
@@ -102,5 +103,13 @@ public class Distribution extends MappedInteger {
 
     public void setEtatdistribue(int etatdistribue) {
         this.etatdistribue = etatdistribue;
+    }
+
+    public String getIdmateriel() {
+        return idmateriel;
+    }
+
+    public void setIdmateriel(String idmateriel) {
+        this.idmateriel = idmateriel;
     }
 }

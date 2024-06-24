@@ -8,6 +8,7 @@ import inventorymanagement.stockage.distribution.Distribution;
 import itusolar.prepare.HServiceManager;
 
 import java.sql.Connection;
+import java.util.Random;
 
 public class ArticleManager extends HServiceManager implements ArticleManagerSignature {
     ArticleManagerSignature articleManagerSignature;
@@ -38,6 +39,13 @@ public class ArticleManager extends HServiceManager implements ArticleManagerSig
         Listearticle[] data=(Listearticle[])CGenUtil.rechercher(new Listearticle(), new String[0], new String[0], connection, "and idarticle='"+idarticle+"'");
         return data[0];
     }
+
+    public Article getsinglearticle(String idarticle,Connection connection) throws Exception {
+        connection=this.getConnection(connection);
+        Article[] data=(Article[])CGenUtil.rechercher(new Article(), new String[0], new String[0], connection, "and idarticle='"+idarticle+"'");
+        return data[0];
+    }
+
 
     public Article[] cast(Object[] datas) {
         Article[] articles = new Article[datas.length];
@@ -134,6 +142,13 @@ public class ArticleManager extends HServiceManager implements ArticleManagerSig
         return articlePageList;
     }
 
+    public ArticlePageList analysestock(Connection connection) throws Exception {
+        connection=this.getConnection(connection);
+        ArticlePageList articlePageList=new ArticlePageList();
+        articlePageList.setStockarticles(getstockarticle(connection));
+        return articlePageList;
+    }
+
     public ArticlePageList getOnePage(String idarticle,Connection connection) throws Exception {
         connection=this.getConnection(connection);
         ArticlePageList articlePageList=new ArticlePageList();
@@ -156,5 +171,36 @@ public class ArticleManager extends HServiceManager implements ArticleManagerSig
         articlePageList.setSommebonetat(sommedetailbonetat(idarticle,connection));
         articlePageList.setSommeabime(sommedetailabime(idarticle,connection));
         return articlePageList;
+    }
+
+    public Stockarticle[] stockurgents(Connection connection) throws Exception {
+        connection=this.getConnection(connection);
+        Stockarticle[] data=(Stockarticle[])CGenUtil.rechercher(new Stockarticle(), new String[0], new String[0], connection, "and degre=5 or degre=2 order by degre desc");
+        return data;
+    }
+
+    public Reapprovisionnement[] getreapprovisionnement(Connection connection) throws Exception {
+        connection=this.getConnection(connection);
+        Stockarticle[] stockurgents = stockurgents(connection);
+        Reapprovisionnement[] reapprovisionnements = new Reapprovisionnement[stockurgents.length];
+
+        for (int i = 0; i < stockurgents.length; i++) {
+            Reapprovisionnement reapprovisionnement = new Reapprovisionnement();
+            reapprovisionnement.setIdarticle(stockurgents[i].getIdarticle());
+            reapprovisionnement.setMarque(stockurgents[i].getMarque());
+            reapprovisionnement.setModele(stockurgents[i].getModele());
+            reapprovisionnement.setCodearticle(stockurgents[i].getCodearticle());
+            reapprovisionnement.setQuantitestock(stockurgents[i].getQuantitestock());
+            reapprovisionnement.setStocksecurite(stockurgents[i].getStocksecurite());
+            reapprovisionnement.setVal(stockurgents[i].getVal());
+            reapprovisionnement.setTypemateriel(stockurgents[i].getTypemateriel());
+            reapprovisionnement.setIdtypemateriel(stockurgents[i].getIdtypemateriel());
+            Random rand = new Random();
+            double stockrecharge = reapprovisionnement.getStocksecurite() + (50 - reapprovisionnement.getStocksecurite()) * rand.nextDouble();
+            reapprovisionnement.setStockrecharge(stockrecharge);
+            reapprovisionnements[i] = reapprovisionnement;
+        }
+
+        return  reapprovisionnements;
     }
 }

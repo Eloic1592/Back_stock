@@ -13,7 +13,7 @@ public class Listearticle extends MappedInteger {
     double prix;
     double quantitestock;
     String val;
-
+    double stocksecurite;
 
     public Listearticle() {
         super.setNomTable("liste_article");
@@ -118,4 +118,11 @@ public class Listearticle extends MappedInteger {
         this.val = val;
     }
 
+    public double getStocksecurite() {
+        return stocksecurite;
+    }
+
+    public void setStocksecurite(double stocksecurite) {
+        this.stocksecurite = stocksecurite;
+    }
 }

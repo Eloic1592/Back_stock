@@ -5,8 +5,10 @@ import inventorymanagement.article.ArticleManager;
 
 import inventorymanagement.depot.DepotManager;
 import inventorymanagement.emplacement.EmplacementManager;
+import inventorymanagement.materiel.materiel.MaterielManager;
 import inventorymanagement.stockage.distribution.Distribution;
 import inventorymanagement.stockage.distribution.Vuedistribution;
+import inventorymanagement.stockage.distribution.Vuedistributionmateriel;
 import inventorymanagement.stockage.inventaire.Calendrierinventaire;
 import inventorymanagement.stockage.inventaire.Inventaire;
 import inventorymanagement.stockage.inventaire.Vueinventaire;
@@ -21,6 +23,7 @@ public class InventoryManager extends HServiceManager implements InventorySignat
     ArticleManager articleManager=new ArticleManager();
     DepotManager depotManager =new DepotManager();
     EmplacementManager emplacementManager=new EmplacementManager();
+    MaterielManager materielManager=new MaterielManager();
     @Override
     public void createdistribution(Distribution distribution, Connection connection) throws Exception {
         connection = this.getConnection(connection);
@@ -66,6 +69,12 @@ public class InventoryManager extends HServiceManager implements InventorySignat
         Vuedistribution[] data=(Vuedistribution[])CGenUtil.rechercher(new Vuedistribution(), null, null, connection, "");
         return data;
     }
+    public Vuedistributionmateriel[] listdistributionmateriel(Connection connection) throws Exception {
+        connection=this.getConnection(connection);
+        Vuedistributionmateriel[] data=(Vuedistributionmateriel[])CGenUtil.rechercher(new Vuedistributionmateriel(), null, null, connection, "");
+        return data;
+    }
+
 
     @Override
     public Vuestockage[] liststockage(Connection connection) throws Exception {
@@ -106,7 +115,13 @@ public class InventoryManager extends HServiceManager implements InventorySignat
         connection=this.getConnection(connection);
         InventoryPagelist inventoryPagelist=new InventoryPagelist();
         inventoryPagelist.setVuedistributions(this.listdistribution(connection));
-
+        inventoryPagelist.setVuedistributionmateriels(this.listdistributionmateriel(connection));
+        return inventoryPagelist;
+    }
+    public InventoryPagelist distributionmateriel(Connection connection) throws Exception{
+        connection=this.getConnection(connection);
+        InventoryPagelist inventoryPagelist=new InventoryPagelist();
+        inventoryPagelist.setVuedistributionmateriels(this.listdistributionmateriel(connection));
         return inventoryPagelist;
     }
 
@@ -153,6 +168,7 @@ public class InventoryManager extends HServiceManager implements InventorySignat
         connection=this.getConnection(connection);
         InventoryPagelist inventoryPagelist=new InventoryPagelist();
         inventoryPagelist.setArticles(articleManager.getall(connection));
+        inventoryPagelist.setMateriels(materielManager.getallmateriel(connection));
         inventoryPagelist.setDepots(depotManager.getall(connection));
         inventoryPagelist.setListeemplacements(emplacementManager.getall(connection));
         return inventoryPagelist;
@@ -198,13 +214,18 @@ public class InventoryManager extends HServiceManager implements InventorySignat
 
     public Calendrierinventaire[] calendriercree(Connection connection) throws Exception {
         connection=this.getConnection(connection);
-        Calendrierinventaire[] data=(Calendrierinventaire[])CGenUtil.rechercher(new Calendrierinventaire(), null, null, connection, "and rownum<=5");
+        Calendrierinventaire[] data=(Calendrierinventaire[])CGenUtil.rechercher(new Calendrierinventaire(), null, null, connection, "and TRUNC(datecalendrier) <= TRUNC(SYSDATE) and rownum<=5");
         return data;
     }
 
     public Calendrierinventaire[] listecalendrierinventaire(Connection connection) throws Exception {
         connection=this.getConnection(connection);
         Calendrierinventaire[] data=(Calendrierinventaire[])CGenUtil.rechercher(new Calendrierinventaire(), null, null, connection, "and TRUNC(datecalendrier) = TRUNC(SYSDATE)");
+        return data;
+    }
+    public Calendrierinventaire[] inventairesprevus(Connection connection) throws Exception {
+        connection=this.getConnection(connection);
+        Calendrierinventaire[] data=(Calendrierinventaire[])CGenUtil.rechercher(new Calendrierinventaire(), null, null, connection, "and TRUNC(datecalendrier) > TRUNC(SYSDATE) and rownum<=5");
         return data;
     }
 
@@ -214,6 +235,7 @@ public class InventoryManager extends HServiceManager implements InventorySignat
         inventoryPagelist.setCalendriercree(calendriercree(connection));
         inventoryPagelist.setCalendrierinventaires(listecalendrierinventaire(connection));
         inventoryPagelist.setAllinventaires(getallinventaire(connection));
+        inventoryPagelist.setInventairesprevus(inventairesprevus(connection));
         return inventoryPagelist;
     }
 

@@ -17,6 +17,7 @@ public class Inventaire extends MappedInteger {
     int statut;
     int etatinventaire;
     String description;
+    String idmateriel;
 
     public Inventaire() {
         this.setNomTable("inventaire");
@@ -102,5 +103,13 @@ public class Inventaire extends MappedInteger {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getIdmateriel() {
+        return idmateriel;
+    }
+
+    public void setIdmateriel(String idmateriel) {
+        this.idmateriel = idmateriel;
     }
 }

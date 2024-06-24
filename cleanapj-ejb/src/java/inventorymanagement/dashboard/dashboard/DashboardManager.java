@@ -348,6 +348,7 @@ public class DashboardManager extends HServiceManager implements DashboardManang
         dashboard.setEtatstockannee(etatstockannees(annee,connection));
         dashboard.setPourcentageabimestock(sommeabimeannee(annee,connection));
         dashboard.setPourcentagebonetatstock(sommebonetatannee(annee,connection));
+        dashboard.setDepensemois(depensemois(connection));
         return dashboard;
     }
 
@@ -417,6 +418,11 @@ public class DashboardManager extends HServiceManager implements DashboardManang
         return dashboard;
     }
 
+    public Depensemois[] depensemois(Connection connection) throws Exception {
+        connection = this.getConnection(connection);
+        Depensemois[] data=(Depensemois[])CGenUtil.rechercher(new Depensemois(), null, null, connection, "");
+        return data;
+    }
 
     @Override
     public FIFO[] getFIFO(Connection connection) throws Exception {

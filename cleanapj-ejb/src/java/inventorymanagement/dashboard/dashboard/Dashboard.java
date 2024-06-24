@@ -10,6 +10,7 @@ public class Dashboard {
     Etatdetailstockannee [] etatdetailstockannee;
     double pourcentagebonetatstock;
     double pourcentageabimestock;
+    Depensemois [] depensemois;
 
     public Dashboard() {
     }
@@ -84,5 +85,13 @@ public class Dashboard {
 
     public void setEtatdetailstockannee(Etatdetailstockannee[] etatdetailstockannee) {
         this.etatdetailstockannee = etatdetailstockannee;
+    }
+
+    public Depensemois[] getDepensemois() {
+        return depensemois;
+    }
+
+    public void setDepensemois(Depensemois[] depensemois) {
+        this.depensemois = depensemois;
     }
 }

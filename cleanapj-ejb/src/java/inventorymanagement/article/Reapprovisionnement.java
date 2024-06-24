@@ -1,8 +1,6 @@
 package inventorymanagement.article;
 
-import itusolar.prepare.MappedInteger;
-
-public class Stockarticle extends MappedInteger {
+public class Reapprovisionnement extends Stockarticle {
     String idarticle;
     String marque;
     String modele;
@@ -12,22 +10,9 @@ public class Stockarticle extends MappedInteger {
     String idtypemateriel;
     String val;
     String typemateriel;
-    String niveaustock;
-    int degre;
+    double stockrecharge;
 
-
-    public Stockarticle() {
-        setNomTable("stock_article");
-    }
-
-    @Override
-    public String getTuppleID() {
-        return idarticle;
-    }
-
-    @Override
-    public String getAttributIDName() {
-        return "idarticle";
+    public Reapprovisionnement() {
     }
 
     public String getIdarticle() {
@@ -70,6 +55,13 @@ public class Stockarticle extends MappedInteger {
         this.quantitestock = quantitestock;
     }
 
+    public double getStocksecurite() {
+        return stocksecurite;
+    }
+
+    public void setStocksecurite(double stocksecurite) {
+        this.stocksecurite = stocksecurite;
+    }
 
     public String getIdtypemateriel() {
         return idtypemateriel;
@@ -95,27 +87,11 @@ public class Stockarticle extends MappedInteger {
         this.typemateriel = typemateriel;
     }
 
-    public double getStocksecurite() {
-        return stocksecurite;
+    public double getStockrecharge() {
+        return stockrecharge;
     }
 
-    public void setStocksecurite(double stocksecurite) {
-        this.stocksecurite = stocksecurite;
-    }
-
-    public String getNiveaustock() {
-        return niveaustock;
-    }
-
-    public void setNiveaustock(String niveaustock) {
-        this.niveaustock = niveaustock;
-    }
-
-    public int getDegre() {
-        return degre;
-    }
-
-    public void setDegre(int degre) {
-        this.degre = degre;
+    public void setStockrecharge(double stockrecharge) {
+        this.stockrecharge = stockrecharge;
     }
 }

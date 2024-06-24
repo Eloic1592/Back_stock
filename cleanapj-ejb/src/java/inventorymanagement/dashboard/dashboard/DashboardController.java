@@ -14,8 +14,8 @@ public class DashboardController extends HController {
 
     DashboardManager dashboardManager=new DashboardManager();
 
-    @HPost(url="/etatstockannee")
-    public void etatstockannee(HttpServletRequest request, HttpServletResponse response,DashboardParams dashboardParams) throws Exception {
+    @HPost(url="/etatgeneraldesstock")
+    public void etatgeneraldesstock(HttpServletRequest request, HttpServletResponse response,DashboardParams dashboardParams) throws Exception {
         this.activeJson(response);
         Connection connection = this.getConnection();
         this.writeSuccess(response, null,this.dashboardManager.etatdestockparannee(dashboardParams.getAnnee(),connection)).close();

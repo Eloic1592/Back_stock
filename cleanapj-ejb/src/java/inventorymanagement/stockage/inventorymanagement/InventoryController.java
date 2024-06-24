@@ -50,6 +50,14 @@ public class InventoryController extends HController {
         connection.close();
     }
 
+    @HPost(url="/listdistributionmat")
+    public void distributionmateriel(HttpServletRequest request, HttpServletResponse response,Object o) throws Exception {
+        this.activeJson(response);
+        Connection connection = this.getConnection();
+        this.writeSuccess(response, null,this.inventoryManager.distributionmateriel(connection)).close();
+        connection.close();
+    }
+
     @HPost(url="/liststockage")
     public void stockage(HttpServletRequest request, HttpServletResponse response,Object o) throws Exception {
         this.activeJson(response);

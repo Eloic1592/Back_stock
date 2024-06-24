@@ -44,6 +44,15 @@ public class ArticleController extends HController {
         connection.close();
     }
 
+    @HPost(url="/analystock")
+    public void analystock(HttpServletRequest request, HttpServletResponse response,Object o) throws Exception {
+        this.activeJson(response);
+        Connection connection = this.getConnection();
+        this.writeSuccess(response, null,this.articleManager.analysestock(connection)).close();
+        connection.close();
+    }
+
+
     @HPost(url="/getarticle")
     public void getarticle(HttpServletRequest request, HttpServletResponse response,ArticleParams articleParams) throws Exception {
         this.activeJson(response);
@@ -66,6 +75,14 @@ public class ArticleController extends HController {
         this.activeJson(response);
         Connection connection = this.getConnection();
         this.writeSuccess(response, null,this.articleManager.getdetaistockarticle(articleParams.getIdarticle(),connection)).close();
+        connection.close();
+    }
+
+    @HPost(url="/reapprovisionnement")
+    public void reapprovisionnement(HttpServletRequest request, HttpServletResponse response,ArticleParams articleParams) throws Exception {
+        this.activeJson(response);
+        Connection connection = this.getConnection();
+        this.writeSuccess(response, null,this.articleManager.getreapprovisionnement(connection)).close();
         connection.close();
     }
 }

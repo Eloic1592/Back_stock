@@ -3,8 +3,10 @@ package inventorymanagement.stockage.inventorymanagement;
 import inventorymanagement.article.Article;
 import inventorymanagement.depot.Depot;
 import inventorymanagement.emplacement.Listeemplacement;
+import inventorymanagement.materiel.materiel.Materiel;
 import inventorymanagement.stockage.distribution.Distribution;
 import inventorymanagement.stockage.distribution.Vuedistribution;
+import inventorymanagement.stockage.distribution.Vuedistributionmateriel;
 import inventorymanagement.stockage.inventaire.Calendrierinventaire;
 import inventorymanagement.stockage.inventaire.Inventaire;
 import inventorymanagement.stockage.inventaire.Vueinventaire;
@@ -13,10 +15,12 @@ import inventorymanagement.stockage.stockage.Vuestockage;
 
 public class InventoryPagelist {
     Vuedistribution[] vuedistributions;
+    Vuedistributionmateriel[] vuedistributionmateriels;
     Vuestockage[] vuestockages;
     Vueinventaire[] vueinventaires;
     Listeemplacement[] listeemplacements;
     Article[] articles;
+    Materiel [] materiels;
     Depot[] depots;
     Distribution distribution;
     Stockage stockage;
@@ -24,6 +28,7 @@ public class InventoryPagelist {
     Calendrierinventaire[] allinventaires;
     Calendrierinventaire[] calendrierinventaires;
     Calendrierinventaire[] calendriercree;
+    Calendrierinventaire[] inventairesprevus;
 
     public InventoryPagelist() {
     }
@@ -122,5 +127,29 @@ public class InventoryPagelist {
 
     public void setAllinventaires(Calendrierinventaire[] allinventaires) {
         this.allinventaires = allinventaires;
+    }
+
+    public Materiel[] getMateriels() {
+        return materiels;
+    }
+
+    public void setMateriels(Materiel[] materiels) {
+        this.materiels = materiels;
+    }
+
+    public Vuedistributionmateriel[] getVuedistributionmateriels() {
+        return vuedistributionmateriels;
+    }
+
+    public void setVuedistributionmateriels(Vuedistributionmateriel[] vuedistributionmateriels) {
+        this.vuedistributionmateriels = vuedistributionmateriels;
+    }
+
+    public Calendrierinventaire[] getInventairesprevus() {
+        return inventairesprevus;
+    }
+
+    public void setInventairesprevus(Calendrierinventaire[] inventairesprevus) {
+        this.inventairesprevus = inventairesprevus;
     }
 }

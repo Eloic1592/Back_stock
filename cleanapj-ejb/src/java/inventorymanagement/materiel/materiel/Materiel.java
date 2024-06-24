@@ -121,4 +121,5 @@ public class Materiel extends MappedInteger {
     public void setStatut(int statut) {
         this.statut = statut;
     }
+
 }
